@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import FileBase64 from 'react-file-base64';
+import FileInput from '../Utils/FileInput';
 
-import './addProduct.css'
+import './addProduct.scss'
 
 const AddProduct = () => {
 
@@ -9,6 +10,20 @@ const AddProduct = () => {
   const [description, setDescription] = useState()
   const [title, setTitle] = useState()
   const [image, setImage] = useState()
+
+  const onImageChoose = (event) => {
+    const finalFile = event.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(finalFile);
+
+    reader.addEventListener(
+      'load',
+      () => {
+        setImage(reader.result)
+      },
+      false,
+    );
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -39,14 +54,15 @@ const AddProduct = () => {
               <label for="price">Price</label>
               <input onChange={(e) => setPrice(e.target.value)} value={price} type="number" className="form-control" id="price" placeholder="Price" />
             </div>
-            {image && <img className="form-group image my-3" src={image} />}
+            {/* {image && <img className="form-group image my-3" src={image} />} */}
             <div className="form-group my-3">
               <label>Product Image</label>
-              <FileBase64
+              {/* <FileBase64
                 type="file"
                 multiple={false}
                 onDone={({ base64 }) => setImage(base64)}
-              />
+              /> */}
+              <FileInput imgSrc={image} onFileChange={onImageChoose} />
             </div>
             <button type="submit" onClick={(e) => handleSubmit(e)} className="btn btn-primary">Submit</button>
           </form>
