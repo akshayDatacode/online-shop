@@ -1,34 +1,54 @@
 import React, { useState } from 'react'
+import FileBase64 from 'react-file-base64';
+
+import './addProduct.css'
 
 const AddProduct = () => {
 
   const [price, setPrice] = useState()
   const [description, setDescription] = useState()
   const [title, setTitle] = useState()
+  const [image, setImage] = useState()
 
-  const handleSubmit = (data) => {
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const data = {
+      title,
+      description,
+      price,
+      image,
+    }
     console.log("data", data)
   }
 
   return (
     <>
-      <div className="row m-0 d-flex justify-content-center">
-        <div className="col-6 border my-5 p-5 shadow-lg rounded-lg ">
+      <div className="row p-3 m-0 d-flex justify-content-center">
+        <div className="col-xs-12 col-sm-6 border my-5 p-5 shadow-lg rounded-lg ">
           <h3 className="text-center">Add Product</h3>
           <form>
             <div className="form-group my-3">
-              <label for="exampleInputEmail1">Title</label>
-              <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+              <label for="title">Title</label>
+              <input type="text" onChange={(e) => setTitle(e.target.value)} value={title} className="form-control" id="title" aria-describedby="title" placeholder="Title" />
             </div>
             <div className="form-group my-3">
-              <label for="exampleInputPassword1">Description</label>
-              <input type="text" className="form-control" id="exampleInputPassword1" placeholder="Password" />
+              <label for="description">Description</label>
+              <input type="text" onChange={(e) => setDescription(e.target.value)} value={description} className="form-control" id="description" placeholder="Description" />
             </div>
             <div className="form-group my-3">
-              <label for="exampleInputPassword1">Price</label>
-              <input onChange={(e) => setPrice(e.target.value)} type="number" className="form-control" id="exampleInputPassword1" placeholder="Password" />
+              <label for="price">Price</label>
+              <input onChange={(e) => setPrice(e.target.value)} value={price} type="number" className="form-control" id="price" placeholder="Price" />
             </div>
-            <button type="submit" onClick={() => handleSubmit()} className="btn btn-primary">Submit</button>
+            {image && <img className="form-group image my-3" src={image} />}
+            <div className="form-group my-3">
+              <label>Product Image</label>
+              <FileBase64
+                type="file"
+                multiple={false}
+                onDone={({ base64 }) => setImage(base64)}
+              />
+            </div>
+            <button type="submit" onClick={(e) => handleSubmit(e)} className="btn btn-primary">Submit</button>
           </form>
         </div>
       </div>
