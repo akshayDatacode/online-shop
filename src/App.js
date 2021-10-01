@@ -1,11 +1,11 @@
 import Header from "./components/Header";
-import Shop from "./components/Shop";
+import AppRoutes from "./components/AppRoutes";
 
 const App = () => {
   return (
     <>
       <Header />
-      <Shop />
+      <AppRoutes />
     </>
   );
 };
