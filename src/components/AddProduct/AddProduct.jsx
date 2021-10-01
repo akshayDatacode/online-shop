@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
+import FileBase64 from 'react-file-base64';
+
+import './addProduct.css'
 
 const AddProduct = () => {
 
   const [price, setPrice] = useState()
   const [description, setDescription] = useState()
   const [title, setTitle] = useState()
+  const [image, setImage] = useState()
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -12,6 +16,7 @@ const AddProduct = () => {
       title,
       description,
       price,
+      image,
     }
     console.log("data", data)
   }
@@ -33,6 +38,15 @@ const AddProduct = () => {
             <div className="form-group my-3">
               <label for="price">Price</label>
               <input onChange={(e) => setPrice(e.target.value)} value={price} type="number" className="form-control" id="price" placeholder="Price" />
+            </div>
+            {image && <img className="form-group image my-3" src={image} />}
+            <div className="form-group my-3">
+              <label>Product Image</label>
+              <FileBase64
+                type="file"
+                multiple={false}
+                onDone={({ base64 }) => setImage(base64)}
+              />
             </div>
             <button type="submit" onClick={(e) => handleSubmit(e)} className="btn btn-primary">Submit</button>
           </form>
