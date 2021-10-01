@@ -8,10 +8,12 @@ const AddProduct = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // console.log("data", data)
-    console.log("title", title)
-    console.log("description", description)
-    console.log("price", price)
+    const data = {
+      title,
+      description,
+      price,
+    }
+    console.log("data", data)
   }
 
   return (
