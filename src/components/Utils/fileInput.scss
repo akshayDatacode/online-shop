@@ -1,0 +1,52 @@
+.file-input-container {
+  height: 140px;
+  // width: 156px;
+  background: #f3f4f5;
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.24);
+  cursor: pointer;
+
+  .upload-icon {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    .t-a-center{
+      text-align: center;
+    }
+    .file-upload {
+      cursor: pointer;
+      opacity: 0;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .mb-8 {
+    margin-bottom: 8px;
+  }
+  .imageWrapper {
+    position: relative;
+    .editIcon {
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        background: black;
+        opacity: 0.7;
+        color: white;
+        top: 0px;
+        right: 0px !important;
+        margin: 4px;
+    }
+    .uploadedImage {
+        height: 140px;
+		object-fit: cover;
+        width: 100%;
+        aspect-ratio: 16/15;
+    }
+    input[type="file"]{
+      display: none;
+    }
+  }
+}
