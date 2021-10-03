@@ -3,9 +3,9 @@ const api = `http://www.localhost:5000/api`;
 
 export const addProduct = (product) => {
   return axios
-    .post(`${api}/api/add_product`, product)
+    .post(`${api}/add_product`, product)
     .then(({ data }) => {
-      debugger
+      debugger;
       return { success: true, data };
     })
     .catch((error) => {
@@ -13,20 +13,20 @@ export const addProduct = (product) => {
     });
 };
 
-export const getAgents = (zipCode) => {
+export const getProducts = () => {
   return axios
-    .post(`${api}/user/get_agents`, { zipCode })
+    .get(`${api}/fetch_products`)
     .then(({ data }) => {
       return { success: true, data };
     })
     .catch((error) => {
-      console.log("get agents error", error);
+      console.log("get products error", error);
     });
 };
 
-export const getUserProfile = (userId) => {
+export const addProductToCart = (product) => {
   return axios
-    .post(`${api}/user/get_user_profile`, { userId })
+    .post(`${api}/add_to_cart`, product)
     .then(({ data }) => {
       return { success: true, data };
     })
