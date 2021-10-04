@@ -7,4 +7,7 @@ router.post("/add_product", shopController.addProduct);
 router.get("/get_product/:id", shopController.getProduct);
 router.get("/fetch_products", shopController.fetchProducts);
 
+router.post("/add_order", shopController.addOrder);
+router.get("/get_orders", shopController.getOrders);
+
 module.exports = router;

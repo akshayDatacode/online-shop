@@ -1,5 +1,13 @@
-.image{
+.image {
   height: 85vh;
   width: 100%;
   object-fit: cover;
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+a {
+  text-decoration: none !important;
 }
