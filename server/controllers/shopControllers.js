@@ -1,4 +1,5 @@
 const Product = require("../models/productModel");
+const Order = require("../models/ordersModel");
 
 const addProduct = async (req, res, next) => {
   const { id, title, image, price, description } = req.body;
@@ -47,6 +48,42 @@ const fetchProducts = async (req, res) => {
   }
 };
 
+const addOrder = async (req, res, next) => {
+  const { id, email, cartList, total } = req.body;
+  const createdOrder = new Order({
+    id,
+    email,
+    order: cartList,
+    total,
+  });
+
+  try {
+    const order = await createdOrder.save();
+    res.send({ order: order, success: true });
+  } catch (err) {
+    console.log(err);
+    const error = new HttpResponse(err, 500);
+    return res.status(500).json({ response: error });
+  }
+
+  return res.status(201).json({
+    id,
+    email,
+  });
+};
+
+const getOrders = async (req, res) => {
+  try {
+    const orders = await Order.find({});
+    return res.send({ orders: orders, success: true });
+  } catch (error) {
+    console.error(error);
+    return res.send({ success: false });
+  }
+};
+
 exports.addProduct = addProduct;
 exports.getProduct = getProduct;
 exports.fetchProducts = fetchProducts;
+exports.addOrder = addOrder;
+exports.getOrders = getOrders;

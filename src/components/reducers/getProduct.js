@@ -9,6 +9,11 @@ const setProductToCartList = (state, action) => {
   };
 };
 
+const clearCart = (state, action) => ({
+  ...state,
+  cartList: [],
+});
+
 const deleteProductFromCartList = (state, action) => {
   const cartRef = state && state.cartList;
   const data = cartRef.filter((item) => item !== action.payload);
@@ -21,4 +26,5 @@ const deleteProductFromCartList = (state, action) => {
 export const getShopHandlers = {
   [constants.SET_PRODUCT_TO_CART_LIST]: setProductToCartList,
   [constants.DELETE_PRODUCT_FROM_CART_LIST]: deleteProductFromCartList,
+  [constants.CLEAR_CART]: clearCart,
 };

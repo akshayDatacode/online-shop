@@ -11,7 +11,10 @@ const Header = () => {
         </div>
         <div className="col-md-6 col-12 px-md-2 px-0 text-right d-flex justify-content-end">
           <Link to="/cart">
-            <h3 className="mx-md-5 mx-2"><i className="fas fa-shopping-cart" />Cart</h3>
+            <h3 className="mx-md-5 mx-2 text-warning"><i className="fas fa-shopping-cart px-2" />Cart</h3>
+          </Link>
+          <Link to="/orders">
+            <h3 className="mx-md-5 mx-2">Orders</h3>
           </Link>
           <Link to="/add">
             <button className="btn btn-success">

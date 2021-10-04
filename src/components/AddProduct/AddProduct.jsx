@@ -37,7 +37,9 @@ const AddProduct = () => {
     }
     addProduct(data).then((res) => {
       if (res) {
-        toast.success('Product successfully created')
+        toast.success('Product successfully created', {
+          position: toast.POSITION.TOP_CENTER
+        })
         setDescription('')
         setPrice('')
         setImage('')
