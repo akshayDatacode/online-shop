@@ -47,6 +47,35 @@ const fetchProducts = async (req, res) => {
   }
 };
 
+const addProductToCart = async (req, res) => {
+  const {
+    body: { title, description, img, price },
+    params: { id },
+  } = req;
+  const product = {
+    title,
+    description,
+    img,
+    price,
+  };
+  try {
+    const updatedCart = await CodeProblemModel.findOneAndUpdate(
+      { id: id },
+      { $push: { cart: product } },
+      { new: true }
+    );
+
+    return res.send({
+      success: true,
+      problem: updatedCart,
+    });
+  } catch (error) {
+    console.error(error);
+    return res.send({ success: false });
+  }
+};
+
 exports.addProduct = addProduct;
 exports.getProduct = getProduct;
 exports.fetchProducts = fetchProducts;
+exports.addProductToCart = addProductToCart;

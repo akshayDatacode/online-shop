@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import FileBase64 from 'react-file-base64';
 import FileInput from '../Utils/FileInput';
+import { addProduct } from '../../apiServices'
 
 import './addProduct.scss'
 
@@ -33,7 +34,7 @@ const AddProduct = () => {
       price,
       image,
     }
-    console.log("data", data)
+    addProduct(data)
   }
 
   return (
