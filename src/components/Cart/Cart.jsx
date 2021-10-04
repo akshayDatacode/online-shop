@@ -33,17 +33,20 @@ const Cart = () => {
           <h1 className="text-center">Cart Items</h1>
           {cartList && cartList.length ? cartList.map((item, i) => (
             <div className="row m-0 p-2" key={i}>
-              <div className="col-8">
+              <div className="col-2 d-flex align-items-center">
                 <img
-                  src={require(`../../assets/uploadPlus.png`).default}
+                  src={item.image}
                   alt="loading.."
+                  className="image img-fluid"
                 />
-                {item.title}
               </div>
-              <div className="col-3 text-center">
-                <h6 className="text-primary">{item.price} $</h6>
+              <div className="col-6 d-flex align-items-center">
+                <h6 className="mb-0">{item.title}</h6>
               </div>
-              <div className="col-1">
+              <div className="col-3 text-center d-flex align-items-center">
+                <h6 className="text-primary mb-0">{item.price} $</h6>
+              </div>
+              <div className="col-1 d-flex align-items-center">
                 <i onClick={() => handleRemoveFromCart(item)} className="fal fa-times text-danger" />
               </div>
             </div>

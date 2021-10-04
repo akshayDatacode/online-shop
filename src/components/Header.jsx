@@ -2,22 +2,22 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const Header = () => {
-  
+
   return (
     <>
-      <div className="row m-0 bg-dark p-3">
-        <div className="col-12 text-left d-flex justify-content-between">
+      <div className="row m-0 bg-dark p-3 align-items-center">
+        <div className="col-md-6 col-12 px-md-2 px-0 text-left d-flex justify-content-between">
           <Link to='/'><h1 className="text-white">Online Shop</h1></Link>
-          <div className="">
-            <Link to="/cart">
-              <span className="mx-5"><i className="fas fa-shopping-cart" />Cart</span>
-            </Link>
-            <Link to="/add">
-              <button className="btn btn-success">
-                <span>Add Product</span>
-              </button>
-            </Link>
-          </div>
+        </div>
+        <div className="col-md-6 col-12 px-md-2 px-0 text-right d-flex justify-content-end">
+          <Link to="/cart">
+            <h3 className="mx-md-5 mx-2"><i className="fas fa-shopping-cart" />Cart</h3>
+          </Link>
+          <Link to="/add">
+            <button className="btn btn-success">
+              <span>Add Product</span>
+            </button>
+          </Link>
         </div>
       </div>
     </>

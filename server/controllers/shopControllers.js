@@ -1,12 +1,12 @@
 const Product = require("../models/productModel");
 
 const addProduct = async (req, res, next) => {
-  const { id, title, img, price, description } = req.body;
+  const { id, title, image, price, description } = req.body;
 
   const createdProduct = new Product({
     id,
     title,
-    img,
+    image,
     price,
     description,
   });
@@ -47,35 +47,6 @@ const fetchProducts = async (req, res) => {
   }
 };
 
-const addProductToCart = async (req, res) => {
-  const {
-    body: { title, description, img, price },
-    params: { id },
-  } = req;
-  const product = {
-    title,
-    description,
-    img,
-    price,
-  };
-  try {
-    const updatedCart = await CodeProblemModel.findOneAndUpdate(
-      { id: id },
-      { $push: { cart: product } },
-      { new: true }
-    );
-
-    return res.send({
-      success: true,
-      problem: updatedCart,
-    });
-  } catch (error) {
-    console.error(error);
-    return res.send({ success: false });
-  }
-};
-
 exports.addProduct = addProduct;
 exports.getProduct = getProduct;
 exports.fetchProducts = fetchProducts;
-exports.addProductToCart = addProductToCart;
