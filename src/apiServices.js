@@ -5,7 +5,6 @@ export const addProduct = (product) => {
   return axios
     .post(`${api}/add_product`, product)
     .then(({ data }) => {
-      debugger;
       return { success: true, data };
     })
     .catch((error) => {
@@ -21,16 +20,5 @@ export const getProducts = () => {
     })
     .catch((error) => {
       console.log("get products error", error);
-    });
-};
-
-export const addProductToCart = (product) => {
-  return axios
-    .post(`${api}/add_to_cart`, product)
-    .then(({ data }) => {
-      return { success: true, data };
-    })
-    .catch((error) => {
-      console.log("get user profile error", error);
     });
 };

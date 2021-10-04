@@ -35,7 +35,6 @@ const AddProduct = () => {
       image,
     }
     addProduct(data)
-    console.log("data", data)
   }
 
   return (
