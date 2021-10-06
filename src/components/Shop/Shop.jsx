@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 import { getProducts } from '../../apiServices'
 import ProductCard from './ProductCard'
 
 import { setProductToCartList } from '../actionCreators'
 
-import { toast } from 'react-toastify'
-import { Link } from 'react-router-dom'
 
 
 const Shop = () => {
@@ -25,6 +25,7 @@ const Shop = () => {
 
   const handleAddToCart = (item, quantity) => {
     item['quantity'] = quantity
+    item['key'] = item._id
     dispatch(setProductToCartList(item))
     toast.success('Item successfully added into cart', {
       position: toast.POSITION.TOP_CENTER
@@ -35,19 +36,24 @@ const Shop = () => {
 
   return (
     <>
+      <img
+        src={require(`../../assets/hero.png`).default}
+        alt="Loading..."
+        className="img-fluid"
+      />
       <div className="row m-0">
         <div className="col-12 text-left">
-          <div className="row px-3 my-4">
-            <div className="col-12 text-center d-flex justify-content-center">
-              <div className="form-group d-flex align-items-center mx-md-5 mx-2 px-md-4 px-1">
-                <h1><i className="far fa-search search-icon mx-3" /></h1>
+          <div className="row px-md-5 px-3 my-5">
+            <div className="col-12 px-0  text-center d-flex justify-content-center">
+              <div className="d-flex mx-md-5 mx-2 px-0 fontSearch">
                 <input
                   type="text"
-                  className="form-control"
+                  className="search"
                   value={search}
-                  placeholder="search product"
+                  placeholder="Search Your Product"
                   onChange={(e) => setSearch(e.target.value)}
                 />
+                <i className="fad fa-search search-icon" />
               </div>
             </div>
           </div>

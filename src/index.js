@@ -8,6 +8,7 @@ import { Provider } from "react-redux";
 import store from "./core/store";
 import "react-toastify/dist/ReactToastify.css";
 import "./components/AddProduct/addProduct.scss";
+import "./assets/scss/style.scss";
 
 ReactDOM.render(
   <React.StrictMode>
