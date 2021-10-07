@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import BootstrapTable from 'react-bootstrap-table-next'
 
 import { deleteCartItem, clearCart } from '../actionCreators'
 import CompleteOrderModal from './CompleteOrderModal'
 import { addOrder } from '../../apiServices'
+import { getColumns, daysCodeList } from './helpers'
 
 const Cart = () => {
   const dispatch = useDispatch()
@@ -53,37 +55,24 @@ const Cart = () => {
     })
   }
 
+  let columns = getColumns(handleRemoveFromCart)
+
   return (
     <>
       <div className="row p-md-5 p-2 m-0 d-flex justify-content-center">
         <div className="col-md-6 col-12 border p-md-4 p-2">
           <h3 className="text-center">{tempUserEmail ? "Order Confirmed" : "Cart Items"}</h3>
-          {cartList && cartList.length ? cartList.map((item, i) => (
-            <div className="row m-0 p-2" key={i}>
-              <div className="col-2 d-flex align-items-center">
-                <img
-                  src={item.image}
-                  alt="loading.."
-                  className="image img-fluid"
-                />
-              </div>
-              <div className="col-4 d-flex align-items-center">
-                <h6 className="mb-0">{item.title}</h6>
-              </div>
-              <div className="col-2 text-right d-flex align-items-center">
-                <h6 className="text-primary mb-0">x{item.quantity}</h6>
-              </div>
-              <div className="col-3 text-right d-flex align-items-center">
-                <h6 className="text-primary mb-0">{item.price * item.quantity} $</h6>
-              </div>
-              {
-                !tempUserEmail &&
-                <div className="col-1 d-flex align-items-center">
-                  <i onClick={() => handleRemoveFromCart(item)} className="fal fa-times text-danger" />
-                </div>
-              }
+          {cartList && cartList.length ?
+            <div className="table table-responsive">
+              <BootstrapTable
+                keyField='id'
+                bordered={true}
+                data={cartList}
+                columns={columns}
+                search
+                hover={true}
+              />
             </div>
-          ))
             :
             <>
               {
