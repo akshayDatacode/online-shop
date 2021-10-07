@@ -7,8 +7,7 @@ import { getProducts } from '../../apiServices'
 import ProductCard from './ProductCard'
 
 import { setProductToCartList } from '../actionCreators'
-
-
+import Filter from './Filter'
 
 const Shop = () => {
   const dispatch = useDispatch()
@@ -62,7 +61,7 @@ const Shop = () => {
           </div>
           <div className="row m-0 p-md-5 p-0">
             <div className="col-12 col-md-2 border">
-              cf
+              <Filter />
             </div>
             <div className="col-12 col-md-10">
               <div className="row mx-0 card-group">
