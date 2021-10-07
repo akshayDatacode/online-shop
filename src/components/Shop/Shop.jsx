@@ -44,7 +44,7 @@ const Shop = () => {
       <div className="row m-0">
         <div className="col-12 text-left">
           <div className="row px-md-5 px-3 my-5">
-            <div className="col-12 px-0  text-center d-flex justify-content-center">
+            <div className="col-12 col-md-11 px-0  text-center d-flex justify-content-center">
               <div className="d-flex mx-md-5 mx-2 px-0 fontSearch">
                 <input
                   type="text"
@@ -56,15 +56,25 @@ const Shop = () => {
                 <i className="fad fa-search search-icon" />
               </div>
             </div>
+            <div className='col-12 col-md-1 text-center d-flex align-items-center'>
+              <i className="fal fa-filter filter-icon" />
+            </div>
           </div>
           <div className="row m-0 p-md-5 p-0">
-            {
-              products && products.length ? filteredList.map((item, i) => (
-                <ProductCard key={i} product={item} i={i} handleAddToCart={handleAddToCart} />
-              ))
-                :
-                <h6>No Items in Store please <Link to="/add">Add Product</Link></h6>
-            }
+            <div className="col-12 col-md-2 border">
+              cf
+            </div>
+            <div className="col-12 col-md-10">
+              <div className="row mx-0 card-group">
+                {
+                  products && products.length ? filteredList.map((item, i) => (
+                    <ProductCard key={i} product={item} i={i} handleAddToCart={handleAddToCart} />
+                  ))
+                    :
+                    <h6>No Items in Store please <Link to="/add">Add Product</Link></h6>
+                }
+              </div>
+            </div>
           </div>
         </div>
       </div>
