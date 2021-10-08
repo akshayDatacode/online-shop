@@ -7,7 +7,7 @@ const setProductToCartList = (state, action) => {
     (e) => e.key === action.payload.key
   );
   if (existedProductIndex !== -1) {
-    cartRef[existedProductIndex].quantity += action.payload?.quantity;
+    cartRef[existedProductIndex].quantity += +action.payload?.quantity;
   } else {
     cartRef.push(action.payload);
   }
@@ -37,7 +37,6 @@ const setQuantity = (state, action) => {
     (e) => e.key === action.payload.id
   );
   if (existedProductIndex !== -1) {
-    debugger
     cartRef[existedProductIndex].quantity = +action.payload?.qty;
   }
   return {
