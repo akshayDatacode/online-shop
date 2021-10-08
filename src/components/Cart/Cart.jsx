@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import BootstrapTable from 'react-bootstrap-table-next'
 
-import { deleteCartItem, clearCart } from '../actionCreators'
+import { deleteCartItem, clearCart, setQuantity } from '../actionCreators'
 import CompleteOrderModal from './CompleteOrderModal'
 import { addOrder } from '../../apiServices'
 import { getColumns, daysCodeList } from './helpers'
@@ -55,7 +55,11 @@ const Cart = () => {
     })
   }
 
-  let columns = getColumns(handleRemoveFromCart)
+  const handleSetQuantity = (qty, id) => {
+    return dispatch(setQuantity({ qty, id }))
+  }
+
+  let columns = getColumns(handleRemoveFromCart, handleSetQuantity)
 
   return (
     <>
