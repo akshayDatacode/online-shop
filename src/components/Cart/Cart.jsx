@@ -63,7 +63,7 @@ const Cart = () => {
 
   return (
     <>
-      <div className="row p-md-5 p-2 m-0 d-flex justify-content-center">
+      <div className="row mt-5 p-md-5 p-2 m-0 d-flex justify-content-center">
         <div className="col-md-6 col-12 border p-md-4 p-2">
           <h3 className="text-center">{tempUserEmail ? "Order Confirmed" : "Cart Items"}</h3>
           {cartList && cartList.length ?

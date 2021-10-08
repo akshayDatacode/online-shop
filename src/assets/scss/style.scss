@@ -47,6 +47,69 @@
     bottom: 0;
   }
 }
+
+.main-header {
+  transition: all 0.3s ease;
+  height: 70px;
+
+  // .nav-link {
+  //   color: #fff;
+  //   font-size: 18px;
+  //   font-family: "latoregular";
+  //   &.active,
+  //   &:hover {
+  //     text-decoration: underline;
+  //   }
+  // }
+  // i {
+  //   color: #fff;
+  // }
+  &.sticky {
+    background-color: #fff;
+    .nav-link {
+      color: rgba(0, 0, 0, 0.88);
+      &.active,
+      &:hover {
+        text-decoration: underline;
+        color: #317a46;
+      }
+    }
+    h1 {
+      color: #317a46 !important;
+    }
+    .logo-text {
+      color: #317a46;
+    }
+    i {
+      color: rgba(0, 0, 0, 0.88);
+    }
+  }
+}
+
+.header-white {
+  transition: all 0.3s ease;
+  height: 70px;
+  position: fixed;
+  background-color: #ffffff;
+  .nav-link {
+    font-size: 18px;
+    font-family: "latoregular";
+    color: rgba(0, 0, 0, 0.88);
+    &.active,
+    &:hover {
+      text-decoration: underline;
+      color: #317a46;
+    }
+  }
+  margin-bottom: 50px !important;
+}
+.header-white.sticky {
+  position: fixed;
+}
+.header-white ~ .banner-top {
+  margin-top: 70px;
+}
+
 @media (max-width: 767px) {
   .fontSearch {
     width: 100%;

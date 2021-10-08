@@ -50,7 +50,7 @@ const AddProduct = () => {
 
   return (
     <>
-      <div className="row p-3 m-0 d-flex justify-content-center">
+      <div className="row mt-5 p-3 m-0 d-flex justify-content-center">
         <div className="col-xs-12 col-sm-6 border my-5 p-md-5 p-3 shadow-lg rounded-lg ">
           <h3 className="text-center">Add Product</h3>
           <form>
