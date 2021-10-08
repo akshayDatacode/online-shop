@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export const getColumns = (handleRemoveFromCart) => [
+export const getColumns = (handleRemoveFromCart, handleSetQuantity) => [
   {
     dataField: "",
     text: "S.NO.",
@@ -44,6 +44,25 @@ export const getColumns = (handleRemoveFromCart) => [
     align: "center",
     headerAlign: "center",
     headerClasses: "table-header group-name",
+    formatter: (cell, row) => (
+      <div className="">
+        {row.quantity > 1 && (
+          <span
+            className="px-1 text-white bg-danger rounded cursor-pointer"
+            onClick={() => handleSetQuantity(row.quantity - 1, row._id)}
+          >
+            -
+          </span>
+        )}
+        <span className="px-2">{row.quantity}</span>
+        <span
+          className="px-1 text-white bg-primary rounded cursor-pointer"
+          onClick={() => handleSetQuantity(row.quantity + 1, row._id)}
+        >
+          +
+        </span>
+      </div>
+    ),
   },
   {
     dataField: "price",
