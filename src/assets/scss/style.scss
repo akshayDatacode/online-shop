@@ -88,9 +88,18 @@
 
 .header-white {
   transition: all 0.3s ease;
-  height: 70px;
-  position: fixed;
-  background-color: #ffffff;
+  
+  width: 100%;
+  height: 60px;
+  background-color: whitesmoke;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+
+  position: sticky;
+  top: -3px;
+  transition: top 0.3s;
+
   .nav-link {
     font-size: 18px;
     font-family: "latoregular";

@@ -15,7 +15,7 @@ const App = () => {
   };
 
   const backDropClickHandler = () => {
-    setCartDrawerOpen(false);
+    setCartDrawerOpen(!cartDrawerOpen);
   };
 
   let backDrop;
