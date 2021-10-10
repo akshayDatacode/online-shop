@@ -9,6 +9,7 @@ import store from "./core/store";
 import "react-toastify/dist/ReactToastify.css";
 import "./components/AddProduct/addProduct.scss";
 import "./assets/scss/style.scss";
+import "./assets/scss/cart-drawer.scss";
 
 ReactDOM.render(
   <React.StrictMode>
