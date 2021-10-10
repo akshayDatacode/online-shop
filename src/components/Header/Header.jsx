@@ -3,9 +3,9 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useLocation } from "react-router";
 
-import { countTotalCartItems } from '../utility'
+import { countTotalCartItems } from '../../utility'
 
-const Header = () => {
+const Header = ({ drawerClickHandler }) => {
   const location = useLocation().pathname;
   const urlList = [
     "/cart",
@@ -44,14 +44,14 @@ const Header = () => {
               urlList.includes(location) ? (
                 <img
                   alt="avtar"
-                  src={require("../assets/images/logo.svg").default}
+                  src={require("../../assets/images/logo.svg").default}
                   className="img-fluid"
                   width="220"
                 />
               ) : (
                 <img
                   alt="avtar"
-                  src={require("../assets/images/logo-white.svg").default}
+                  src={require("../../assets/images/logo-white.svg").default}
                   className="img-fluid"
                   width="220"
                 />
@@ -59,9 +59,9 @@ const Header = () => {
           </Link>
         </div>
         <div className="col-md-6 col-12 px-md-2 px-0 text-right d-flex justify-content-end">
-          <Link to="/cart">
-            <h3 className="mx-md-5 mx-2 text-warning">{countTotalCartItems(cartCount)} <i className="fas fa-shopping-cart px-2" />Cart</h3>
-          </Link>
+          {/* <Link to="/cart"> */}
+          <h3 onClick={() => drawerClickHandler()} className="mx-md-5 mx-2 text-warning">{countTotalCartItems(cartCount)} <i className="fas fa-shopping-cart px-2" />Cart</h3>
+          {/* </Link> */}
           <Link to="/orders">
             <h3 className="mx-md-5 mx-2">Orders</h3>
           </Link>
