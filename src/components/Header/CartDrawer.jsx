@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Cart from "../Cart/Cart";
 
 const CartDrawer = ({
   backDropClickHandler,
@@ -14,11 +15,13 @@ const CartDrawer = ({
     <>
       <div className={drawerClasses}>
         <div className="col-12 p-0">
-          <div className="row m-0 mt-md-0 mt-4 side-header">
-            <div className="col-12">
-              <h1>Cart Items</h1>
+          <div className="row m-0 p-4 bg-secondary side-header">
+            <div className="col-12 d-flex align-items-center justify-content-between">
+              <i onClick={() => backDropClickHandler()} className="far fa-chevron-right mr-5" />
+              <h4 className="mb-0">Cart Items</h4>
             </div>
           </div>
+          <Cart />
         </div>
       </div>
     </>
