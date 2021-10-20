@@ -13,7 +13,7 @@ const CustomLoader = ({
           color={color || "#797676"}
           height={50}
           width={50}
-          timeout={19000} //8 secs
+          timeout={1000} //1 secs
         />
       </div>
     </div>

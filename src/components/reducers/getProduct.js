@@ -11,10 +11,11 @@ const setProductToCartList = (state, action) => {
   } else {
     cartRef.push(action.payload);
   }
+
   return {
     ...state,
     cartList: cartRef,
-    addProductToCartLoading: !state.addProductToCartLoading,
+    addProductToCartLoading: false,
   };
 };
 

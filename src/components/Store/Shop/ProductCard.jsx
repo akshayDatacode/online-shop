@@ -2,14 +2,16 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 
 import { handleTextVisibility } from '../../../utility'
-import CustomLoader from '../../Utils/CustomLoader'
 
 const ProductCard = ({
   product, i, handleAddToCart
 }) => {
-  const addProductToCartLoading = useSelector(({ shop }) => shop.addProductToCartLoading)
+  const cartList = useSelector(({ shop }) => shop.cartList)
 
   const [quantity, setQuantity] = useState(1)
+
+  const added = cartList.findIndex((item) => item._id === product._id) !== -1
+
   return (
     <>
       <div key={i} className="col-md-3 col-12 p-3 product-card">
@@ -29,17 +31,24 @@ const ProductCard = ({
           <div className="footer card-footer p-0 border-none border-top-0">
             <div className="d-flex align-items-center justify-content-between">
               <h6 className="my-3 text-success"><i className="fas fa-money-bill-wave" /> {product.price} $</h6>
-              <div className="">
-                {quantity > 1 && <span className="px-1 text-white bg-danger rounded cursor-pointer" onClick={() => setQuantity(quantity - 1)}>-</span>}<span className="px-2">{quantity}</span><span className="px-1 text-white bg-primary rounded cursor-pointer" onClick={() => setQuantity(quantity + 1)}>+</span>
-              </div>
-            </div>
-            <button onClick={() => handleAddToCart(product, quantity)} type="button" className="btn btn-sm btn-primary">
               {
-                addProductToCartLoading ?
-                  <CustomLoader /> :
-                  <span><i className="fas fa-plus" /> Add to Cart </span>
+                !added ?
+                  <div className="">
+                    {quantity > 1 && <span className="px-1 text-white bg-danger rounded cursor-pointer" onClick={() => setQuantity(quantity - 1)}>-</span>}<span className="px-2">{quantity}</span><span className="px-1 text-white bg-primary rounded cursor-pointer" onClick={() => setQuantity(quantity + 1)}>+</span>
+                  </div> :
+                  <span className="text-primary">check cart</span>
               }
-            </button>
+            </div>
+            {
+              added ?
+                <button type="button" disabled className="btn btn-sm btn-primary">
+                  <span><i className="fas fa-check" /> Added to Cart </span>
+                </button>
+                :
+                <button onClick={() => handleAddToCart(product, quantity)} type="button" className="btn btn-sm btn-primary">
+                  <span><i className="fas fa-plus" /> Add to Cart </span>
+                </button>
+            }
           </div>
         </div>
       </div>
