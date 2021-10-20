@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { handleTextVisibility } from '../../utility'
+import { handleTextVisibility } from '../../../utility'
 
 const ProductCard = ({
   product, i, handleAddToCart

@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import BootstrapTable from 'react-bootstrap-table-next'
 
-import { deleteCartItem, clearCart, setQuantity } from '../actionCreators'
+import { deleteCartItem, clearCart, setQuantity } from '../../actions/actionCreators'
 import CompleteOrderModal from './CompleteOrderModal'
-import { addOrder } from '../../apiServices'
+import { addOrder } from '../../actions/apiServices'
 import { getColumns, daysCodeList } from './helpers'
 
 const Cart = ({
@@ -139,7 +139,7 @@ const Cart = ({
               <>
                 <div className="row mx-0 py-2 px-4 bg-dark align-items-center">
                   <div className="col-8">
-                    <h6 className="mb-0 text-white">Total</h6>
+                    <h6 className="mb-0 text-white">Sub Total</h6>
                   </div>
                   <div className="col-4 text-center">
                     <h6 className="mb-0 text-success text-nowrap">{total} $</h6>

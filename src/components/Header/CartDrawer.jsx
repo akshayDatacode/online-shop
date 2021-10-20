@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Cart from "../Cart/Cart";
+import Cart from "../Store/Cart/Cart";
 
 const CartDrawer = ({
   backDropClickHandler,

@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
 import { toast } from 'react-toastify';
 
-import FileInput from '../Utils/FileInput';
-import { addProduct } from '../../apiServices'
-
-import './addProduct.scss'
+import FileInput from '../../Utils/FileInput';
+import { addProduct } from '../../actions/apiServices'
 
 const AddProduct = () => {
 

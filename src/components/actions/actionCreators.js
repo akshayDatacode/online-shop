@@ -3,7 +3,7 @@ import {
   DELETE_PRODUCT_FROM_CART_LIST,
   CLEAR_CART,
   SET_QUANTITY,
-} from "./constants";
+} from "../constants";
 
 export const setProductToCartList = (data) => ({
   type: SET_PRODUCT_TO_CART_LIST,
