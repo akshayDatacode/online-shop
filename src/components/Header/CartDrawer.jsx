@@ -8,7 +8,7 @@ const CartDrawer = ({
 
   let drawerClasses = "cart-drawer";
   if (show) {
-    drawerClasses = "row m-0 cart-drawer open";
+    drawerClasses = "row m-0 cart-drawer open h-100";
   }
 
   return (

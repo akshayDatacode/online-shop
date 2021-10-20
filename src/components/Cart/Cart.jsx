@@ -63,76 +63,77 @@ const Cart = () => {
 
   return (
     <>
-      <div className="row p-2 m-0 ">
-        <div className="col-12 border p-md-4 p-2">
-          <h3 className="text-center">{tempUserEmail ? "Order Confirmed" : "Cart Items"}</h3>
-          {cartList && cartList.length ?
-            // <div className="table table-responsive">
-            //   <BootstrapTable
-            //     keyField='id'
-            //     bordered={true}
-            //     data={cartList}
-            //     columns={columns}
-            //     search
-            //     hover={true}
-            //   />
-            // </div>
-            cartList.map((item, i) => (
-              <div className="row mx-0" key={i}>
-                <div className="col-4">
-                  <img
-                    src={item.image}
-                    className="rounded-circle"
-                    height="50"
-                    width="50"
-                    alt="loading..."
-                  />
-                </div>
-                <div className="col-8">
-                  <h6>{item.title}</h6>
-                  <span className="text-success">₹{item.price}</span>
-                  <div className="">
-                    {item.quantity > 1 && (
+      <div className="row p-2 m-0">
+        <div className="col-12 border p-0">
+          <div className="cart-list">
+            {cartList && cartList.length ?
+              // <div className="table table-responsive">
+              //   <BootstrapTable
+              //     keyField='id'
+              //     bordered={true}
+              //     data={cartList}
+              //     columns={columns}
+              //     search
+              //     hover={true}
+              //   />
+              // </div>
+              cartList.map((item, i) => (
+                <div className="row mx-0 my-4 pb-2 border-bottom" key={i}>
+                  <div className="col-4">
+                    <img
+                      src={item.image}
+                      className="rounded-circle"
+                      height="50"
+                      width="50"
+                      alt="loading..."
+                    />
+                  </div>
+                  <div className="col-8">
+                    <h6>{item.title}</h6>
+                    <span className="text-success">₹{item.price}</span>
+                    <div className="">
+                      {item.quantity > 1 && (
+                        <span
+                          className="px-1 text-white bg-danger rounded cursor-pointer"
+                          onClick={() => handleSetQuantity(item.quantity - 1, item._id)}
+                        >
+                          -
+                        </span>
+                      )}
+                      <span className="px-2">{item.quantity}</span>
                       <span
-                        className="px-1 text-white bg-danger rounded cursor-pointer"
-                        onClick={() => handleSetQuantity(item.quantity - 1, item._id)}
+                        className="px-1 text-white bg-primary rounded cursor-pointer"
+                        onClick={() => handleSetQuantity(item.quantity + 1, item._id)}
                       >
-                        -
-                      </span>
-                    )}
-                    <span className="px-2">{item.quantity}</span>
-                    <span
-                      className="px-1 text-white bg-primary rounded cursor-pointer"
-                      onClick={() => handleSetQuantity(item.quantity + 1, item._id)}
-                    >
-                      +
+                        +
                     </span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))
-            :
-            <>
-              {
-                !tempUserEmail &&
-                <h6 className="text-center">Cart Empty Please,
+              ))
+              :
+              <>
+                {
+                  !tempUserEmail &&
+                  <h6 className="text-center">Cart Empty Please,
                 <span className="mx-2"><Link to="/">Add Item into Cart</Link></span>
-                </h6>
-              }
-            </>
-          }
+                  </h6>
+                }
+              </>
+            }
+          </div>
           {
             cartList && cartList.length ?
               <>
                 <div className="row py-2 px-4 bg-dark align-items-center">
                   <div className="col-8">
-                    <h6 className="text-white">Total</h6>
+                    <h6 className="mb-0 text-white">Total</h6>
                   </div>
                   <div className="col-4 text-center">
-                    <h6 className="text-success">{total} $</h6>
+                    <h6 className="mb-0 text-success text-nowrap">{total} $</h6>
                   </div>
                 </div>
-                <div className="row m-0 p-md-3 my-3" >
+                <div className="row m-0 p-md-3 mt-3" >
                   <div className="col-12 text-center">
                     <button onClick={() => toggleModal()} className="btn btn-success">Complete Order</button>
                   </div>
