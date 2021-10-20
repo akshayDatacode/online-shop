@@ -11,9 +11,11 @@ const setProductToCartList = (state, action) => {
   } else {
     cartRef.push(action.payload);
   }
+
   return {
     ...state,
     cartList: cartRef,
+    addProductToCartLoading: false,
   };
 };
 
@@ -45,9 +47,20 @@ const setQuantity = (state, action) => {
   };
 };
 
+const setProductToCartListLoading = (state) => ({
+  addProductToCartLoading: !state.addProductToCartLoading,
+});
+
+const resetReduxState = (state) => ({
+  ...state,
+  cartList: [],
+});
+
 export const getShopHandlers = {
   [constants.SET_PRODUCT_TO_CART_LIST]: setProductToCartList,
   [constants.DELETE_PRODUCT_FROM_CART_LIST]: deleteProductFromCartList,
   [constants.CLEAR_CART]: clearCart,
   [constants.SET_QUANTITY]: setQuantity,
+  [constants.SET_PRODUCT_TO_CART_LIST_LOADING]: setProductToCartListLoading,
+  [constants.RESET_REDUX_STATES]: resetReduxState,
 };

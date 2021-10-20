@@ -11,6 +11,7 @@ import Filter from './Filter'
 
 const Shop = () => {
   const dispatch = useDispatch()
+
   const [products, setProducts] = useState([])
   const [search, setSearch] = useState('')
 

@@ -4,6 +4,7 @@ import { createReducer } from "../../core/reduxUtils";
 const initialState = {
   cartList: [],
   loading: false,
+  addProductToCartLoading: false,
 };
 
 const handlers = {
