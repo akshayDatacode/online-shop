@@ -60,8 +60,8 @@ const Shop = () => {
               <i className="fal fa-filter filter-icon" />
             </div>
           </div>
-          <div className="row m-0 p-md-5 p-0">
-            <div className="col-12 col-md-2 border">
+          <div className="row m-0 p-md-4 p-0">
+            <div className="col-12 col-md-2 px-0 border">
               <Filter />
             </div>
             <div className="col-12 col-md-10">
