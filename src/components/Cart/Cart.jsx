@@ -16,6 +16,7 @@ const Cart = () => {
   const [total, setTotal] = useState(0)
   const [openModal, setOpenModal] = useState(false)
   const [tempUserEmail, setTempUserEmail] = useState()
+  const [showCross, setShowCross] = useState(false)
 
   useEffect(() => {
     let t = 0
@@ -78,7 +79,7 @@ const Cart = () => {
               //   />
               // </div>
               cartList.map((item, i) => (
-                <div className="row mx-0 my-4 pb-2 border-bottom" key={i}>
+                <div className="row mx-0 my-4 pb-2 border-bottom" onMouseLeave={() => setShowCross(false)} onMouseEnter={() => setShowCross(i)} key={i}>
                   <div className="col-4">
                     <img
                       src={item.image}
@@ -89,9 +90,18 @@ const Cart = () => {
                     />
                   </div>
                   <div className="col-8">
-                    <h6>{item.title}</h6>
+                    <div className="d-flex justify-content-between">
+                      <h6>{item.title}</h6>
+                      {
+                        showCross === i &&
+                        <i
+                          onClick={() => handleRemoveFromCart(item)}
+                          className="fal fa-times text-danger"
+                        />
+                      }
+                    </div>
                     <span className="text-success">₹{item.price}</span>
-                    <div className="">
+                    <div className="counter-toggle">
                       {item.quantity > 1 && (
                         <span
                           className="px-1 text-white bg-danger rounded cursor-pointer"
