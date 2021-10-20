@@ -4,18 +4,21 @@ import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import BootstrapTable from 'react-bootstrap-table-next'
 
-import { deleteCartItem, clearCart, setQuantity } from '../actionCreators'
+import { deleteCartItem, clearCart, setQuantity } from '../../actions/actionCreators'
 import CompleteOrderModal from './CompleteOrderModal'
-import { addOrder } from '../../apiServices'
+import { addOrder } from '../../actions/apiServices'
 import { getColumns, daysCodeList } from './helpers'
 
-const Cart = () => {
+const Cart = ({
+  backDropClickHandler
+}) => {
   const dispatch = useDispatch()
 
   const cartList = useSelector(({ shop }) => shop.cartList)
   const [total, setTotal] = useState(0)
   const [openModal, setOpenModal] = useState(false)
   const [tempUserEmail, setTempUserEmail] = useState()
+  const [showCross, setShowCross] = useState(false)
 
   useEffect(() => {
     let t = 0
@@ -78,7 +81,7 @@ const Cart = () => {
               //   />
               // </div>
               cartList.map((item, i) => (
-                <div className="row mx-0 my-4 pb-2 border-bottom" key={i}>
+                <div className="row mx-0 my-4 pb-2 border-bottom" onMouseLeave={() => setShowCross(false)} onMouseEnter={() => setShowCross(i)} key={i}>
                   <div className="col-4">
                     <img
                       src={item.image}
@@ -89,9 +92,18 @@ const Cart = () => {
                     />
                   </div>
                   <div className="col-8">
-                    <h6>{item.title}</h6>
+                    <div className="d-flex justify-content-between">
+                      <h6>{item.title}</h6>
+                      {
+                        showCross === i &&
+                        <i
+                          onClick={() => handleRemoveFromCart(item)}
+                          className="fal fa-times text-danger"
+                        />
+                      }
+                    </div>
                     <span className="text-success">₹{item.price}</span>
-                    <div className="">
+                    <div className="counter-toggle">
                       {item.quantity > 1 && (
                         <span
                           className="px-1 text-white bg-danger rounded cursor-pointer"
@@ -112,22 +124,22 @@ const Cart = () => {
                 </div>
               ))
               :
-              <>
+              <div className="d-flex align-items-center my-5">
                 {
                   !tempUserEmail &&
                   <h6 className="text-center">Cart Empty Please,
-                <span className="mx-2"><Link to="/">Add Item into Cart</Link></span>
+                  <span className="mx-2" onClick={() => backDropClickHandler()}><Link to="/">Add Item into Cart</Link></span>
                   </h6>
                 }
-              </>
+              </div>
             }
           </div>
           {
             cartList && cartList.length ?
               <>
-                <div className="row py-2 px-4 bg-dark align-items-center">
+                <div className="row mx-0 py-2 px-4 bg-dark align-items-center">
                   <div className="col-8">
-                    <h6 className="mb-0 text-white">Total</h6>
+                    <h6 className="mb-0 text-white">Sub Total</h6>
                   </div>
                   <div className="col-4 text-center">
                     <h6 className="mb-0 text-success text-nowrap">{total} $</h6>

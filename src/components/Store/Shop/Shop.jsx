@@ -3,10 +3,10 @@ import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
-import { getProducts } from '../../apiServices'
+import { getProducts } from '../../actions/apiServices'
 import ProductCard from './ProductCard'
 
-import { setProductToCartList } from '../actionCreators'
+import { setProductToCartList } from '../../actions/actionCreators'
 import Filter from './Filter'
 
 const Shop = () => {
@@ -36,7 +36,7 @@ const Shop = () => {
   return (
     <>
       <img
-        src={require(`../../assets/hero.png`).default}
+        src={require(`../../../assets/hero.png`).default}
         alt="Loading..."
         className="img-fluid"
       />

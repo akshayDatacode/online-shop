@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import BootstrapTable from 'react-bootstrap-table-next'
 
-import { deleteCartItem, clearCart, setQuantity } from '../actionCreators'
+import { deleteCartItem, clearCart, setQuantity } from '../../actions/actionCreators'
 import CompleteOrderModal from './CompleteOrderModal'
-import { addOrder } from '../../apiServices'
+import { addOrder } from '../../actions/apiServices'
 import { getColumns, daysCodeList } from './helpers'
 
 const BillingCart = () => {

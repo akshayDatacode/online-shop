@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Cart from "../Cart/Cart";
+import Cart from "../Store/Cart/Cart";
 
 const CartDrawer = ({
   backDropClickHandler,
@@ -21,7 +21,7 @@ const CartDrawer = ({
               <h4 className="mb-0">Cart Items</h4>
             </div>
           </div>
-          <Cart />
+          <Cart backDropClickHandler={backDropClickHandler} />
         </div>
       </div>
     </>

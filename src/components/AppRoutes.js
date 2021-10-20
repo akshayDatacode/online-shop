@@ -1,8 +1,8 @@
 import { Switch, Route } from "react-router-dom";
-import Shop from "./Shop";
-import AddProduct from "./AddProduct";
-import Cart from "./Cart/Cart";
-import Orders from "./Orders/Orders";
+import Shop from "./Store/Shop";
+import AddProduct from "./Store/AddProduct";
+import Cart from "./Store/Cart/Cart";
+import Orders from "./Store/Orders/Orders";
 
 const AppRoutes = () => {
   return (
