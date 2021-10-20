@@ -9,7 +9,7 @@ import CompleteOrderModal from './CompleteOrderModal'
 import { addOrder } from '../../apiServices'
 import { getColumns, daysCodeList } from './helpers'
 
-const Cart = () => {
+const BillingCart = () => {
   const dispatch = useDispatch()
 
   const cartList = useSelector(({ shop }) => shop.cartList)
@@ -67,50 +67,16 @@ const Cart = () => {
         <div className="col-12 border p-md-4 p-2">
           <h3 className="text-center">{tempUserEmail ? "Order Confirmed" : "Cart Items"}</h3>
           {cartList && cartList.length ?
-            // <div className="table table-responsive">
-            //   <BootstrapTable
-            //     keyField='id'
-            //     bordered={true}
-            //     data={cartList}
-            //     columns={columns}
-            //     search
-            //     hover={true}
-            //   />
-            // </div>
-            cartList.map((item, i) => (
-              <div className="row mx-0" key={i}>
-                <div className="col-4">
-                  <img
-                    src={item.image}
-                    className="rounded-circle"
-                    height="50"
-                    width="50"
-                    alt="loading..."
-                  />
-                </div>
-                <div className="col-8">
-                  <h6>{item.title}</h6>
-                  <span className="text-success">₹{item.price}</span>
-                  <div className="">
-                    {item.quantity > 1 && (
-                      <span
-                        className="px-1 text-white bg-danger rounded cursor-pointer"
-                        onClick={() => handleSetQuantity(item.quantity - 1, item._id)}
-                      >
-                        -
-                      </span>
-                    )}
-                    <span className="px-2">{item.quantity}</span>
-                    <span
-                      className="px-1 text-white bg-primary rounded cursor-pointer"
-                      onClick={() => handleSetQuantity(item.quantity + 1, item._id)}
-                    >
-                      +
-                    </span>
-                  </div>
-                </div>
-              </div>
-            ))
+            <div className="table table-responsive">
+              <BootstrapTable
+                keyField='id'
+                bordered={true}
+                data={cartList}
+                columns={columns}
+                search
+                hover={true}
+              />
+            </div>
             :
             <>
               {
@@ -163,4 +129,4 @@ const Cart = () => {
   )
 }
 
-export default Cart
+export default BillingCart
