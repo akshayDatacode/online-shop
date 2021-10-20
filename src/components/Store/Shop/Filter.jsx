@@ -15,13 +15,13 @@ const Filter = () => {
     <>
       <div className="row m-0">
         <div className="col-12 px-0">
-          <h1>Filter</h1>
+          <h5 className="p-3 mb-0 bg-secondary text-white  border-bottom">Filter</h5>
           <div className="">
             <div
               onClick={() => toggle('category')}
               className={`m-0 my-4 bg-light d-flex align-items-center carousel-row justify-content-between`}
             >
-              <h6 className="h5 px-3">Categories</h6>
+              <h6 className="h6 px-2">Categories</h6>
               <div className="text-right">
                 {activeTable === 'category' ?
                   <i className="fal fa-minus text-dark p-3" />
@@ -43,7 +43,7 @@ const Filter = () => {
               onClick={() => toggle('price')}
               className={`m-0 my-4 bg-light d-flex align-items-center carousel-row justify-content-between`}
             >
-              <h6 className="h5 px-3">Price</h6>
+              <h6 className="h6 px-2">Price</h6>
               <div className="text-right">
                 {activeTable === 'price' ?
                   <i className="fal fa-minus text-dark p-3" />

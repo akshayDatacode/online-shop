@@ -21,7 +21,7 @@ const ProductCard = ({
 
   return (
     <>
-      <div key={i} className="col-md-3 col-12 p-3 product-card">
+      <div key={i} className="col-md-3 col-12 px-2 mb-3 product-card">
         <div className="border shadow rounded-lg p-3 card h-100 ">
           <div className="card-image mb-3">
             <img
