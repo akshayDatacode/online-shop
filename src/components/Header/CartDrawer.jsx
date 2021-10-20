@@ -21,7 +21,7 @@ const CartDrawer = ({
               <h4 className="mb-0">Cart Items</h4>
             </div>
           </div>
-          <Cart />
+          <Cart backDropClickHandler={backDropClickHandler} />
         </div>
       </div>
     </>

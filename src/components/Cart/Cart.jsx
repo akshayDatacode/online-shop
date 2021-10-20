@@ -9,7 +9,9 @@ import CompleteOrderModal from './CompleteOrderModal'
 import { addOrder } from '../../apiServices'
 import { getColumns, daysCodeList } from './helpers'
 
-const Cart = () => {
+const Cart = ({
+  backDropClickHandler
+}) => {
   const dispatch = useDispatch()
 
   const cartList = useSelector(({ shop }) => shop.cartList)
@@ -122,20 +124,20 @@ const Cart = () => {
                 </div>
               ))
               :
-              <>
+              <div className="d-flex align-items-center my-5">
                 {
                   !tempUserEmail &&
                   <h6 className="text-center">Cart Empty Please,
-                <span className="mx-2"><Link to="/">Add Item into Cart</Link></span>
+                  <span className="mx-2" onClick={() => backDropClickHandler()}><Link to="/">Add Item into Cart</Link></span>
                   </h6>
                 }
-              </>
+              </div>
             }
           </div>
           {
             cartList && cartList.length ?
               <>
-                <div className="row py-2 px-4 bg-dark align-items-center">
+                <div className="row mx-0 py-2 px-4 bg-dark align-items-center">
                   <div className="col-8">
                     <h6 className="mb-0 text-white">Total</h6>
                   </div>
