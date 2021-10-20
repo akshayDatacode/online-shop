@@ -82,6 +82,51 @@ const getOrders = async (req, res) => {
   }
 };
 
+const addProductToCart = async (req, res) => {
+  const {
+    params: { userName },
+    body: { isApproved },
+  } = req;
+
+  try {
+    
+    const updatedProblem = await CodeProblemModel.findOneAndUpdate(
+      { id: id },
+      {
+        $set: { ["submissions.$[outer].isApproved"]: isApproved },
+      },
+      {
+        arrayFilters: [{ "outer.userName": userName }],
+        multi: true,
+      }
+    );
+    const problem = await CodeProblemModel.findOne({ id: id });
+    const user = await DaysCodeUserModel.findOne({ userName: userName });
+    if (updatedProblem && user && user.isApproved) {
+      Emailer.SolutionApprovedEmail(
+        user,
+        problem.day,
+        isApproved,
+        (err, success, res) => {
+          if (err) {
+            console.log("==========err============");
+            console.log(err);
+          } else {
+            console.log(success);
+          }
+        }
+      );
+    }
+    return res.send({
+      success: true,
+      problem: updatedProblem,
+    });
+  } catch (error) {
+    console.error(error);
+    return res.send({ success: false });
+  }
+};
+
 exports.addProduct = addProduct;
 exports.getProduct = getProduct;
 exports.fetchProducts = fetchProducts;

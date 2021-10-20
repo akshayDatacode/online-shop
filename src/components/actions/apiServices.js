@@ -1,4 +1,6 @@
 import axios from "axios";
+import { SET_PRODUCT_TO_CART_LIST_LOADING } from "../constants";
+
 const api = `http://www.localhost:5000/api`;
 
 export const addProduct = (product) => {

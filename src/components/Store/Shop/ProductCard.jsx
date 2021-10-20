@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
+
 import { handleTextVisibility } from '../../../utility'
+import CustomLoader from '../../Utils/CustomLoader'
 
 const ProductCard = ({
   product, i, handleAddToCart
 }) => {
-  const [quantity, setQuantity] = useState(1)
+  const addProductToCartLoading = useSelector(({ shop }) => shop.addProductToCartLoading)
 
+  const [quantity, setQuantity] = useState(1)
   return (
     <>
       <div key={i} className="col-md-3 col-12 p-3 product-card">
@@ -30,7 +34,11 @@ const ProductCard = ({
               </div>
             </div>
             <button onClick={() => handleAddToCart(product, quantity)} type="button" className="btn btn-sm btn-primary">
-              <span><i className="fas fa-plus" /> Add to Cart</span>
+              {
+                addProductToCartLoading ?
+                  <CustomLoader /> :
+                  <span><i className="fas fa-plus" /> Add to Cart </span>
+              }
             </button>
           </div>
         </div>
