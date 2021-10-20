@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 
 import { handleTextVisibility } from '../../../utility'
+import { useEffect } from 'react'
 
 const ProductCard = ({
   product, i, handleAddToCart
@@ -11,6 +12,12 @@ const ProductCard = ({
   const [quantity, setQuantity] = useState(1)
 
   const added = cartList.findIndex((item) => item._id === product._id) !== -1
+
+  useEffect(() => {
+    if (added) {
+      setQuantity(1)
+    }
+  }, [added])
 
   return (
     <>
