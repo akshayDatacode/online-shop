@@ -134,6 +134,29 @@ cart-drawer:not(.cart-drawer) {
   position: fixed !important;
 }
 
+.cart-list {
+  overflow-x: hidden;
+  overflow: scroll;
+  height: 400px;
+}
+
+.cart-list {
+  &::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #f1efef;
+  }
+
+  &::-webkit-scrollbar {
+    width: 3px;
+    height: 5px;
+    background-color: #fff;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #c3c3c3;
+  }
+}
+
 // -----------------------------------
 @media (max-width: 767px) {
   .nav-cross {
