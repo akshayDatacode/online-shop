@@ -19,7 +19,18 @@ const Orders = () => {
         <div key={i} className="row m-0 p-md-5 p-2">
           <div className="col-12 p-2 border rounded-lg bg-dark">
             <h6 className="text-white">{item.email}</h6>
-            <h6 className="text-success">{item.total} $</h6>
+            <h6 className="text-success">Total Amount: {item.total} $</h6>
+            {
+              item.order.map((p, i) => (
+                <div className>
+                  <ul>
+                    <li className="text-white">{p.title}</li>
+                  </ul>
+                  <p></p>
+                </div>
+
+              ))
+            }
           </div>
         </div>
       ))
