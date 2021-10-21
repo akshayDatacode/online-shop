@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Collapse } from 'reactstrap';
+import CustomRangeSlider from '../../Utils/CustomRangeSlider';
 
 const Filter = () => {
   const [activeTable, setActiveTable] = useState('');
@@ -56,6 +57,7 @@ const Filter = () => {
               <div className="row mx-0">
                 <div className="col-12">
                   <p>Filter by Price</p>
+                  <CustomRangeSlider />
                 </div>
               </div>
             </Collapse>
