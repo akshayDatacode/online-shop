@@ -11,7 +11,6 @@ const Header = ({ drawerClickHandler }) => {
 
   return (
     <>
-      {/* className="row m-0 bg-dark p-3 align-items-center " */}
       <div
         className={`row mx-0 w-100 fixed-top py-2 desktop-header 
            header-white
@@ -29,7 +28,7 @@ const Header = ({ drawerClickHandler }) => {
         </div>
         <div className="col-md-6 col-12 px-md-2 px-0 text-right d-flex justify-content-end">
           {/* <Link to="/cart"> */}
-          <h3 onClick={() => drawerClickHandler()} className="mx-md-5 mx-2 text-warning">{countTotalCartItems(cartCount)} <i className="fas fa-shopping-cart px-2" />Cart</h3>
+          <h3 onClick={() => drawerClickHandler()} className="mx-md-5 mx-2 text-primary">{countTotalCartItems(cartCount)} <i className="fas fa-shopping-cart px-2" /></h3>
           {/* </Link> */}
           <Link to="/orders">
             <h3 className="mx-md-5 mx-2">Orders</h3>
