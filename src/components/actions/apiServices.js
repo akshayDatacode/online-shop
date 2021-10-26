@@ -46,3 +46,14 @@ export const getOrders = () => {
       console.log("get orders error", error);
     });
 };
+
+export const getOrder = (id) => {
+  return axios
+    .get(`${api}/get_product/${id}`)
+    .then(({ data }) => {
+      return { success: true, data };
+    })
+    .catch((error) => {
+      console.log("get order error", error);
+    });
+};
