@@ -37,7 +37,7 @@ const Shop = () => {
   return (
     <>
       <img
-        src={require(`../../../assets/hero.png`).default}
+        src={require(`../../../../assets/hero.png`).default}
         alt="Loading..."
         className="img-fluid"
       />

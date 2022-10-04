@@ -1,5 +1,5 @@
 import { getShopHandlers } from "./getProduct";
-import { createReducer } from "../../core/reduxUtils";
+import { createReducer } from "../../../core/reduxUtils";
 
 const initialState = {
   cartList: [],

@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import BootstrapTable from 'react-bootstrap-table-next'
 
-import { deleteCartItem, clearCart, setQuantity } from '../../actions/actionCreators'
+import { deleteCartItem, clearCart, setQuantity } from '../../actions'
 import CompleteOrderModal from './CompleteOrderModal'
-import { addOrder } from '../../actions/apiServices'
+import { addOrder } from '../../../actions/apiServices'
 import { getColumns, daysCodeList } from './helpers'
 
 const BillingCart = () => {
@@ -82,7 +82,7 @@ const BillingCart = () => {
               {
                 !tempUserEmail &&
                 <h6 className="text-center">Cart Empty Please,
-                <span className="mx-2"><Link to="/">Add Item into Cart</Link></span>
+                  <span className="mx-2"><Link to="/">Add Item into Cart</Link></span>
                 </h6>
               }
             </>

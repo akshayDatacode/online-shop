@@ -4,9 +4,8 @@ import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import BootstrapTable from 'react-bootstrap-table-next'
 
-import { deleteCartItem, clearCart, setQuantity } from '../../actions/actionCreators'
+import { deleteCartItem, clearCart, setQuantity, addOrder } from '../../actions'
 import CompleteOrderModal from './CompleteOrderModal'
-import { addOrder } from '../../actions/apiServices'
 import { getColumns, daysCodeList } from './helpers'
 
 const Cart = ({
@@ -118,7 +117,7 @@ const Cart = ({
                         onClick={() => handleSetQuantity(item.quantity + 1, item._id)}
                       >
                         +
-                    </span>
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -128,7 +127,7 @@ const Cart = ({
                 {
                   !tempUserEmail &&
                   <h6 className="text-center">Cart Empty Please,
-                  <span className="mx-2" onClick={() => backDropClickHandler()}><Link to="/">Add Item into Cart</Link></span>
+                    <span className="mx-2" onClick={() => backDropClickHandler()}><Link to="/">Add Item into Cart</Link></span>
                   </h6>
                 }
               </div>
