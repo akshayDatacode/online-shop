@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { toast } from 'react-toastify';
 
-import FileInput from '../../Utils/FileInput';
-import { addProduct } from '../../actions/apiServices'
+import FileInput from '../../../../components/SharedComponents/FileInput';
+import { addProduct } from '../../actions'
 
 const AddProduct = () => {
 

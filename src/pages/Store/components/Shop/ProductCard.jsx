@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 
-import { handleTextVisibility } from '../../../utility'
+import { handleTextVisibility } from '../../../../utility'
 import { useEffect } from 'react'
 
 const ProductCard = ({

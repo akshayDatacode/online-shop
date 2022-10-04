@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Collapse } from 'reactstrap';
-import CustomRangeSlider from '../../Utils/CustomRangeSlider';
+import CustomRangeSlider from '../../../../components/SharedComponents/CustomRangeSlider';
 
 const Filter = () => {
   const [activeTable, setActiveTable] = useState('');

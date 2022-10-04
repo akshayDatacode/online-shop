@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Header from "./components/Header/Header";
-import CartDrawer from "./components/Header/CartDrawer";
-import BackDrop from "./components/Header/BackDrop";
-import AppRoutes from "./components/AppRoutes";
+import Header from "./Header";
+import CartDrawer from "./Header/CartDrawer";
+import BackDrop from "./Header/BackDrop";
+import AppRoutes from "./AppRoutes";
 import { ToastContainer } from "react-toastify";
 
 const App = () => {

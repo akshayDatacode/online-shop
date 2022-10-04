@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 
-import shopReducer from "../components/reducers";
+import shopReducer from "../pages/Store/reducers";
 
 export default combineReducers({
   shop: shopReducer,

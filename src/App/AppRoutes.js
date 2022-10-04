@@ -1,9 +1,9 @@
 import { Switch, Route } from "react-router-dom";
-import Shop from "./Store/Shop";
-import AddProduct from "./Store/AddProduct";
-import Cart from "./Store/Cart/Cart";
-import Orders from "./Store/Orders/Orders";
-import ProductPage from "./Store/Shop/ProductPage";
+import Shop from "../pages/Store/components/Shop";
+import AddProduct from "../pages/Store/components/AddProduct";
+import Cart from "../pages/Store/components/Cart";
+import Orders from "../pages/Store/components/Orders/Orders";
+import ProductPage from "../pages/Store/components/Shop/ProductPage";
 
 const AppRoutes = () => {
   return (
