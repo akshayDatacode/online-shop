@@ -11,7 +11,6 @@ module.exports = mongoose.connect(
   {
     useUnifiedTopology: true,
     useNewUrlParser: true,
-    useCreateIndex: true,
   },
   (error) => {
     if (error) {
