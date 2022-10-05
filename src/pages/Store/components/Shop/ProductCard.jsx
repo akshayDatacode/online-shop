@@ -22,7 +22,7 @@ const ProductCard = ({
   return (
     <>
       <div key={i} className="col-md-3 col-12 px-2 mb-3 product-card">
-        <div className="border shadow rounded-lg p-3 card h-100 ">
+        <div className="border shadow rounded-lg p-0 card h-100 ">
           <div className="card-image mb-3">
             <img
               src={product.image}
@@ -31,11 +31,11 @@ const ProductCard = ({
               sizes="(min-width: 1122px) 296px,(min-width: 866px) 218px,(max-width: 610px) 202px,202px"
             />
           </div>
-          <div className="card-body p-0">
+          <div className="card-body px-3">
             <h5>{product.title}</h5>
             <small>{handleTextVisibility(product.description, 50)}</small>
           </div>
-          <div className="footer card-footer p-0 border-none border-top-0">
+          <div className="footer card-footer px-3 border-none border-top-0">
             <div className="d-flex align-items-center justify-content-between">
               <h6 className="my-3 text-success"><i className="fas fa-money-bill-wave" /> {product.price} $</h6>
               {
