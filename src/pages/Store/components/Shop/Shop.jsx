@@ -57,7 +57,7 @@ const Shop = () => {
               </div>
             </div>
             <div className='col-12 col-md-1 text-center d-flex align-items-center'>
-              <i className="fal fa-filter filter-icon" />
+              {/* <i className="fal fa-filter filter-icon" /> */}
             </div>
           </div>
           <div className="row m-0 p-md-4 p-0">
