@@ -5,6 +5,7 @@ import Cart from "../pages/Store/components/Cart";
 import Orders from "../pages/Store/components/Orders/Orders";
 import ProductPage from "../pages/Store/components/Shop/ProductPage";
 import Login from "../pages/Store/components/User/Login";
+import Singup from "../pages/Store/components/User/Singup";
 
 const AppRoutes = () => {
   return (
@@ -17,6 +18,7 @@ const AppRoutes = () => {
         <Route path="/product/:id" component={ProductPage} />
         <Route path="/orders" component={Orders} />
         <Route exact path="/login" component={Login} />
+        <Route exact path="/singup" component={Singup} />
       </Switch>
     </>
   );
