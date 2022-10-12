@@ -14,7 +14,7 @@ const Filter = () => {
 
   return (
     <>
-      <div className="row m-0">
+      <div className="row mx-0">
         <div className="col-12 px-0">
           <h5 className="p-3 mb-0 bg-secondary text-white  border-bottom">Filter</h5>
           <div className="">

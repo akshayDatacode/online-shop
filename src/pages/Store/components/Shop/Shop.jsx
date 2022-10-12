@@ -43,7 +43,7 @@ const Shop = () => {
       />
       <div className="row m-0">
         <div className="col-12 text-left">
-          <div className="row px-md-5 px-3 my-5">
+          <div className="row mx-0 px-md-5 px-3 my-5">
             <div className="col-12 col-md-11 px-0  text-center d-flex justify-content-center">
               <div className="d-flex mx-md-5 mx-2 px-0 fontSearch">
                 <input
@@ -60,7 +60,7 @@ const Shop = () => {
               {/* <i className="fal fa-filter filter-icon" /> */}
             </div>
           </div>
-          <div className="row m-0 p-md-4 p-0">
+          <div className="row mx-0 p-md-4 p-0">
             <div className="col-12 col-md-2 px-0 border">
               <Filter />
             </div>
