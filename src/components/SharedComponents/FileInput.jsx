@@ -1,8 +1,8 @@
 /* eslint-disable */
 import React, { useRef } from 'react';
 
-import uploadPlus from '../../assets/uploadPlus.png';
-import editIcon from '../../assets/editIcon.png';
+import uploadPlus from '../../assets/images/uploadPlus.png';
+import editIcon from '../../assets/images/editIcon.png';
 import './fileInput.scss';
 
 const FileInput = ({
@@ -16,7 +16,7 @@ const FileInput = ({
   const onDivClick = () => {
     inputOpenFileRef.current?.click()
   }
-  const inputElement =<input
+  const inputElement = <input
     ref={inputOpenFileRef}
     id={name}
     className="file-upload"
