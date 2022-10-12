@@ -48,7 +48,7 @@ const AddProduct = () => {
 
   return (
     <>
-      <div className="row mt-5 p-3 m-0 d-flex justify-content-center">
+      <div className="row mt-5 p-3 mx-0 d-flex justify-content-center">
         <div className="col-xs-12 col-sm-6 border my-5 p-md-5 p-3 shadow-lg rounded-lg ">
           <h3 className="text-center">Add Product</h3>
           <form>
@@ -74,7 +74,7 @@ const AddProduct = () => {
               /> */}
               <FileInput imgSrc={image} onFileChange={onImageChoose} />
             </div>
-            <div className="row m-0">
+            <div className="row mx-0">
               <div className="col-12 text-center">
                 <button type="submit" onClick={(e) => handleSubmit(e)} className="btn btn-primary">Add Product</button>
               </div>

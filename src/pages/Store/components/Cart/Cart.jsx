@@ -65,7 +65,7 @@ const Cart = ({
 
   return (
     <>
-      <div className="row p-2 m-0">
+      <div className="row p-2 mx-0">
         <div className="col-12 border p-0">
           <div className="cart-list">
             {cartList && cartList.length ?
@@ -144,7 +144,7 @@ const Cart = ({
                     <h6 className="mb-0 text-success text-nowrap">{total} <i className="fal fa-rupee-sign" /></h6>
                   </div>
                 </div>
-                <div className="row m-0 p-md-3 mt-3" >
+                <div className="row mx-0 p-md-3 mt-3" >
                   <div className="col-12 text-center">
                     <button onClick={() => toggleModal()} className="btn btn-success">Complete Order</button>
                   </div>
@@ -155,7 +155,7 @@ const Cart = ({
           }
           {
             tempUserEmail &&
-            <div className="row">
+            <div className="row mx-0">
               <div className="col-12 text-center">
                 <h3>Thanks for Shopping with us!</h3>
                 <small>Your invoice will send to your email</small>
