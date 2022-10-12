@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import "./assets/scss/style.scss";
 import "./assets/scss/cart-drawer.scss";
+import './assets/scss/user.scss';
 
 ReactDOM.render(
   <React.StrictMode>
