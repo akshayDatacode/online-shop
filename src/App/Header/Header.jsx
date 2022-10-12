@@ -6,9 +6,13 @@ import { useLocation } from "react-router";
 import { countTotalCartItems } from '../../utility'
 
 const Header = ({ drawerClickHandler }) => {
-
+  const location = useLocation();
   const cartCount = useSelector(({ shop }) => shop.cartList)
 
+  const hideHeaderRoutes = [
+    '/login',
+    '/singup',
+  ]
   return (
     <>
       <div
@@ -26,19 +30,22 @@ const Header = ({ drawerClickHandler }) => {
             />
           </Link>
         </div>
-        <div className="col-md-6 col-12 px-md-2 px-0 text-right d-flex justify-content-end">
-          {/* <Link to="/cart"> */}
-          <h3 onClick={() => drawerClickHandler()} className="mx-md-5 mx-2 text-primary">{countTotalCartItems(cartCount)} <i className="fas fa-shopping-cart px-2" /></h3>
-          {/* </Link> */}
-          <Link to="/orders">
-            <h3 className="mx-md-5 mx-2">Orders</h3>
-          </Link>
-          <Link to="/add">
-            <button className="btn btn-success">
-              <span>Add Product</span>
-            </button>
-          </Link>
-        </div>
+        {
+          !hideHeaderRoutes.includes(location.pathname) &&
+          <div className="col-md-6 col-12 px-md-2 px-0 text-right d-flex justify-content-end">
+            {/* <Link to="/cart"> */}
+            <h3 onClick={() => drawerClickHandler()} className="mx-md-5 mx-2 text-primary">{countTotalCartItems(cartCount)} <i className="fas fa-shopping-cart px-2" /></h3>
+            {/* </Link> */}
+            <Link to="/orders">
+              <h3 className="mx-md-5 mx-2">Orders</h3>
+            </Link>
+            <Link to="/add">
+              <button className="btn btn-success">
+                <span>Add Product</span>
+              </button>
+            </Link>
+          </div>
+        }
       </div>
     </>
   )

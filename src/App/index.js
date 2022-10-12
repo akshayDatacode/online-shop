@@ -27,11 +27,11 @@ const App = () => {
   return (
     <>
       <ToastContainer />
-      {/* <Header drawerClickHandler={drawerToggleClickHandler} />
+      <Header drawerClickHandler={drawerToggleClickHandler} />
       <CartDrawer
         show={cartDrawerOpen}
         backDropClickHandler={backDropClickHandler}
-      /> */}
+      />
       {backDrop}
       <AppRoutes />
     </>
