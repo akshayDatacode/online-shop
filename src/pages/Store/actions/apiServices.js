@@ -46,7 +46,7 @@ export const getOrders = () => {
       console.log("get orders error", error);
     });
 };
-
+    
 export const getOrder = (id) => {
   return axios
     .get(`${api}/get_product/${id}`)

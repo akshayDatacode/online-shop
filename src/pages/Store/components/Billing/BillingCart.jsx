@@ -95,7 +95,7 @@ const BillingCart = () => {
                     <h6 className="text-white">Total</h6>
                   </div>
                   <div className="col-4 text-center">
-                    <h6 className="text-success">{total} $</h6>
+                    <h6 className="text-success">{total} <i className="fal fa-rupee-sign" /></h6>
                   </div>
                 </div>
                 <div className="row m-0 p-md-3 my-3" >

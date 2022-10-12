@@ -14,7 +14,7 @@ const CompleteOrderModal = ({ open, toggle, onSubmit, total }) => {
           <div className="p-4 border">
             <small>Please provide your email to confirm your order</small>
             <h6>Total Amount</h6>
-            <h1 className="text-success">{total} $</h1>
+            <h1 className="text-success">{total} <i className="fal fa-rupee-sign" /></h1>
             <div className="form-group my-3">
               <label>Email</label>
               <input

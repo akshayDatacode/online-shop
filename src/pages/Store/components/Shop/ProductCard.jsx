@@ -37,7 +37,7 @@ const ProductCard = ({
           </div>
           <div className="footer card-footer px-3 border-none border-top-0">
             <div className="d-flex align-items-center justify-content-between">
-              <h6 className="my-3 text-success"><i className="fas fa-money-bill-wave" /> {product.price} $</h6>
+              <h6 className="my-3 text-success"><i className="fas fa-money-bill-wave" /> {product.price} <i className="fal fa-rupee-sign" /></h6>
               {
                 !added ?
                   <div className="">
