@@ -141,7 +141,7 @@ const Cart = ({
                     <h6 className="mb-0 text-white">Sub Total</h6>
                   </div>
                   <div className="col-4 text-center">
-                    <h6 className="mb-0 text-success text-nowrap">{total} $</h6>
+                    <h6 className="mb-0 text-success text-nowrap">{total} <i className="fal fa-rupee-sign" /></h6>
                   </div>
                 </div>
                 <div className="row m-0 p-md-3 mt-3" >
