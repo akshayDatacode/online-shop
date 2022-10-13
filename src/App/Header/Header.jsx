@@ -11,7 +11,7 @@ const Header = ({ drawerClickHandler }) => {
 
   const hideHeaderRoutes = [
     '/login',
-    '/singup',
+    '/signup',
   ]
   return (
     <>
