@@ -16,10 +16,11 @@ export const addProduct = (product) => {
 };
 
 export const getProducts = (filter) => {
-  debugger
   return axios
     .get(`${api}/fetch_products${generateQueryParams({
       search: filter?.search,
+      priceRageStart: filter?.priceRageStart,
+      priceRageEnd: filter?.priceRageEnd,
     })}`)
     .then(({ data }) => {
       return { success: true, data };

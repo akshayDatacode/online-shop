@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
+import Slider from 'react-rangeslider';
 import { Collapse } from 'reactstrap';
-import CustomRangeSlider from '../../../../components/SharedComponents/CustomRangeSlider';
 
-const Filter = () => {
+const Filter = ({
+  handleFilterChange,
+  filterQuery,
+}) => {
   const [activeTable, setActiveTable] = useState('');
 
   const toggle = (openTable) => {
@@ -10,6 +13,11 @@ const Filter = () => {
       return setActiveTable('');
     }
     setActiveTable(openTable)
+  }
+
+  const handlePriceRange = (priceRange) => {
+    const obj = { target: { name: 'priceRageEnd', value: priceRange } }
+    handleFilterChange(obj)
   }
 
   return (
@@ -57,7 +65,11 @@ const Filter = () => {
               <div className="row mx-0">
                 <div className="col-12">
                   <p>Filter by Price</p>
-                  <CustomRangeSlider />
+                  <Slider
+                    value={filterQuery.priceRageEnd}
+                    orientation="horizontal" //vertical
+                    onChange={(e) => handlePriceRange(e)}
+                  />
                 </div>
               </div>
             </Collapse>
