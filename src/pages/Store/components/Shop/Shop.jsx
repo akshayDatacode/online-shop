@@ -13,10 +13,12 @@ const Shop = () => {
   const dispatch = useDispatch()
 
   const [products, setProducts] = useState([])
-  const [search, setSearch] = useState('')
+  const [filterQuery, setFilterQuery] = useState({
+    search: ''
+  })
 
   useEffect(() => {
-    getProducts().then((res) => {
+    getProducts(filterQuery).then((res) => {
       if (res) {
         setProducts(res.data.products)
       }
@@ -32,7 +34,18 @@ const Shop = () => {
     })
   }
 
-  const filteredList = products.filter(item => item.title.toUpperCase().includes(search.toUpperCase()) || item.description.toUpperCase().includes(search.toUpperCase()))
+  const handleFilterChange = (event) => {
+    debugger
+    const { name, value } = event.target
+    setFilterQuery({ ...filterQuery, [name]: value })
+    getProducts({ ...filterQuery, [name]: value }).then((res) => {
+      if (res) {
+        setProducts(res.data.products)
+      }
+    })
+  }
+
+  // const filteredList = products.filter(item => item.title.toUpperCase().includes(search.toUpperCase()) || item.description.toUpperCase().includes(search.toUpperCase()))
 
   return (
     <>
@@ -49,9 +62,10 @@ const Shop = () => {
                 <input
                   type="text"
                   className="search"
-                  value={search}
+                  name='search'
+                  value={filterQuery.search}
                   placeholder="Search Your Product"
-                  onChange={(e) => setSearch(e.target.value)}
+                  onChange={(e) => handleFilterChange(e)}
                 />
                 <i className="fad fa-search search-icon" />
               </div>
@@ -67,7 +81,7 @@ const Shop = () => {
             <div className="col-12 col-md-10">
               <div className="row mx-0 card-group">
                 {
-                  products && products.length ? filteredList.map((item, i) => (
+                  products && products.length ? products.map((item, i) => (
                     <ProductCard key={i} product={item} i={i} handleAddToCart={handleAddToCart} />
                   ))
                     :
