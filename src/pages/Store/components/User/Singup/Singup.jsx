@@ -4,7 +4,7 @@ const Singup = () => {
   const [singupDetails, setSingupDetails] = useState({
     email: '',
     name: '',
-    city: '',
+    address: '',
     phone: '',
     password: '',
     gender: '',
@@ -21,7 +21,7 @@ const Singup = () => {
     setSingupDetails({
       email: '',
       name: '',
-      city: '',
+      address: '',
       phone: '',
       password: '',
       gender: '',
@@ -50,8 +50,8 @@ const Singup = () => {
                 <input type="text" name="phone" onChange={(e) => handleChange(e)} class="form-control form-control-lg" id="staticEmail" value={singupDetails.phone} />
               </div>
               <div class="form-group col-6">
-                <label class="col-form-label">City</label>
-                <input type="text" name="city" onChange={(e) => handleChange(e)} class="form-control form-control-lg" value={singupDetails.city} />
+                <label class="col-form-label">Address</label>
+                <input type="text" name="address" onChange={(e) => handleChange(e)} class="form-control form-control-lg" value={singupDetails.address} />
               </div>
             </div>
             <div className="row mx-0">
