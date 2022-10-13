@@ -1,6 +1,10 @@
 import { useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { signupUser } from "../../actions"
 
 const Singup = () => {
+  const dispatch = useDispatch()
+  const { signupUserLoading } = useSelector(({ user }) => user) || {}
   const [singupDetails, setSingupDetails] = useState({
     email: '',
     name: '',
@@ -17,7 +21,7 @@ const Singup = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log("SingupDetails", singupDetails)
+    dispatch(signupUser(singupDetails))
     setSingupDetails({
       email: '',
       name: '',
@@ -80,7 +84,7 @@ const Singup = () => {
               </div>
             </div>
             <div className="text-center mt-4">
-              <div className="btn btn-primary" onClick={(e) => handleSubmit(e)}>Singup</div>
+              <div className="btn btn-primary" onClick={(e) => handleSubmit(e)}>{signupUserLoading ? "loading..." : "Singup"}</div>
             </div>
           </form>
         </div>

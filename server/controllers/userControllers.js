@@ -3,7 +3,7 @@ const { validationResult } = require("express-validator");
 const bycrypt = require("bcryptjs");
 
 const HttpResponse = require("../models/http-response");
-const User = require('../models/user')
+const User = require('../models/userModel')
 
 //signup==========================================================================
 
