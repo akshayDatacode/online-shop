@@ -15,7 +15,7 @@ const Shop = () => {
   const [products, setProducts] = useState([])
   const [filterQuery, setFilterQuery] = useState({
     search: '',
-    priceRageStart: 2,
+    priceRageStart: 0,
     priceRageEnd: 20,
   })
 
