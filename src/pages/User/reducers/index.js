@@ -1,16 +1,14 @@
-import { getShopHandlers } from "./getProduct";
+import { loadinghandlers } from "./loadinghandler";
 import { createReducer } from "../../../core/reduxUtils";
 
 const initialState = {
-  cartList: [],
-  loading: false,
-  addProductToCartLoading: false,
+  signupUserLoading: false
 };
 
 const handlers = {
-  ...getShopHandlers,
+  ...loadinghandlers,
 };
 
-const shopReducer = createReducer(initialState, handlers);
+const userReducer = createReducer(initialState, handlers);
 
-export default shopReducer;
+export default userReducer;
