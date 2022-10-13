@@ -39,16 +39,19 @@ const getProduct = async (req, res) => {
 };
 
 const getProducts = async (req, res) => {
-  const { search } = req.query
+  const { search, priceRageStart, priceRageEnd } = req.query
 
   let Query = {}
   if (search) {
     let regex = new RegExp(search, 'i')
     Query = { title: regex }
   }
+  if (priceRageStart && priceRageStart) {
+    Query = { ...Query, price: { $gte: priceRageStart, $lte: priceRageEnd } }
+  }
 
   try {
-    const products = await Product.find(Query);
+    const products = await Product.find(Query).sort({ price: 1 });
     return res.send({ products: products, success: true });
   } catch (error) {
     console.error(error);

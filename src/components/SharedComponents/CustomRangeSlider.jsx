@@ -2,19 +2,13 @@ import React, { useState } from 'react'
 import Slider from 'react-rangeslider'
 import 'react-rangeslider/lib/index.css'
 
-const CustomRangeSlider = () => {
-  const [volume, setVolume] = useState()
-
-  const handleOnChange = (value) => {
-    setVolume(value)
-  }
+const CustomRangeSlider = ({
+  handleChange,
+  value
+}) => {
 
   return (
-    <Slider
-      value={volume}
-      orientation="horizontal" //vertical
-      onChange={(e) => handleOnChange(e)}
-    />
+    
   )
 }
 
