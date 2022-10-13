@@ -12,3 +12,14 @@ export const countTotalCartItems = (cartList) => {
     });
   return total;
 };
+
+export const generateQueryParams = (query) => {
+  let str = "?";
+  for (var xyz in query) {
+    if (query[xyz] != null) {
+      str = `${str}${xyz}=${query[xyz]}&`;
+    }
+  }
+  str = str.slice(0, -1);
+  return str !== "" ? str : null;
+};

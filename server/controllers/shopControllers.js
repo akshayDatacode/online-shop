@@ -38,9 +38,17 @@ const getProduct = async (req, res) => {
   }
 };
 
-const fetchProducts = async (req, res) => {
+const getProducts = async (req, res) => {
+  const { search } = req.query
+
+  let Query = {}
+  if (search) {
+    let regex = new RegExp(search, 'i')
+    Query = { title: regex }
+  }
+
   try {
-    const products = await Product.find({});
+    const products = await Product.find(Query);
     return res.send({ products: products, success: true });
   } catch (error) {
     console.error(error);
@@ -89,7 +97,7 @@ const addProductToCart = async (req, res) => {
   } = req;
 
   try {
-    
+
     const updatedProblem = await CodeProblemModel.findOneAndUpdate(
       { id: id },
       {
@@ -129,6 +137,6 @@ const addProductToCart = async (req, res) => {
 
 exports.addProduct = addProduct;
 exports.getProduct = getProduct;
-exports.fetchProducts = fetchProducts;
+exports.getProducts = getProducts;
 exports.addOrder = addOrder;
 exports.getOrders = getOrders;
