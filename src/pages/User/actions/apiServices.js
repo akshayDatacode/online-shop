@@ -9,7 +9,7 @@ export const signupUser = (data) => (dispatch) => {
   return axios
     .post(`${baseURL}/user/signup`, data)
     .then((res) => {
-      if (res.status === 200) {
+      if (res.status === 201) {
         dispatch({ type: SET_SIGNUP_USER_LOADING })
         localStorage.setItem('user', res.data);
         return { success: true, data: res };

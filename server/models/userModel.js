@@ -6,6 +6,7 @@ const userSchema = new Schema(
   {
     id: { type: String },
     username: { type: String },
+    userType: { type: String }, // customer, admin, store owner, manager, delivery
     name: { type: String },
     email: { type: String },
     phone: { type: Number },
