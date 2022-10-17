@@ -7,7 +7,9 @@ import { countTotalCartItems } from '../../utility'
 
 const Header = ({ drawerClickHandler }) => {
   const location = useLocation();
+
   const cartCount = useSelector(({ shop }) => shop.cartList)
+  const { currentUser } = useSelector(({ user }) => user) || {}
 
   const hideHeaderRoutes = [
     '/login',
@@ -16,9 +18,8 @@ const Header = ({ drawerClickHandler }) => {
   return (
     <>
       <div
-        className={`row mx-0 w-100 fixed-top py-2 desktop-header 
-           header-white
-            d-flex align-items-center`}
+        className={`row mx-0 w-100 fixed-top 
+           header-white`}
       >
         <div className="col-md-6 col-12 px-md-5 px-0 text-left d-flex align-items-center justify-content-between">
           <Link to='/'>
@@ -31,19 +32,20 @@ const Header = ({ drawerClickHandler }) => {
           </Link>
         </div>
         {
-          !hideHeaderRoutes.includes(location.pathname) &&
-          <div className="col-md-6 col-12 px-md-2 px-0 text-right d-flex justify-content-end">
+          currentUser?.email &&
+          <div className="col-md-6 col-12 px-md-2 px-0 text-right d-flex align-items-center justify-content-end">
             {/* <Link to="/cart"> */}
-            <h3 onClick={() => drawerClickHandler()} className="mx-md-5 mx-2 text-primary">{countTotalCartItems(cartCount)} <i className="fas fa-shopping-cart px-2" /></h3>
+            <h3 onClick={() => drawerClickHandler()} className="mx-md-5 mx-2 mb-0 text-primary">{countTotalCartItems(cartCount)} <i className="fas fa-shopping-cart px-2" /></h3>
             {/* </Link> */}
             <Link to="/orders">
-              <h3 className="mx-md-5 mx-2">Orders</h3>
+              <h3 className="mx-md-5 mx-2 mb-0">Orders</h3>
             </Link>
             <Link to="/add">
               <button className="btn btn-success">
                 <span>Add Product</span>
               </button>
             </Link>
+            <span>{currentUser?.email}</span>
           </div>
         }
       </div>
