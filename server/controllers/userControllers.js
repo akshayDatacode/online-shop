@@ -93,13 +93,13 @@ exports.signup = async (req, res, next) => {
 
 // LOGIN FUNCTION
 exports.login = async (req, res) => {
-  const { userId, password } = req.body;
+  const { email, password } = req.body;
 
   //trying to find if user email exists.
   let existingUser;
 
   try {
-    existingUser = await User.findOne({ userId: userId });
+    existingUser = await User.findOne({ email: email });
   } catch (err) {
     const error = new HttpResponse(
       "Something went wrong while checking user email",
@@ -145,7 +145,7 @@ exports.login = async (req, res) => {
     );
     return res.status(500).json({ response: error });
   }
-  res.json({
+  res.status(201).json({
     userId: existingUser.userId,
     email: existingUser.email,
     userType: existingUser.userType,
