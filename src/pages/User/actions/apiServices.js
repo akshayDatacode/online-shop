@@ -1,4 +1,5 @@
 import axios from "axios";
+import * as actions from './actionCreators'
 import { generateQueryParams } from "../../../utility";
 import { SET_SIGNUP_USER_LOADING, SET_LOGIN_USER_LOADING } from "../constants";
 
@@ -11,9 +12,7 @@ export const signupUser = (data) => (dispatch) => {
     .then((res) => {
       if (res.status === 201) {
         dispatch({ type: SET_SIGNUP_USER_LOADING })
-        localStorage.setItem('user', res.data);
-        debugger
-        localStorage.setItem('token', res.data.token);
+        dispatch(actions.setSignupUser(res.data.token))
         return { success: true, data: res };
       } else {
         return { success: false, data: res };
@@ -35,9 +34,7 @@ export const loginUser = (data) => (dispatch) => {
       debugger
       if (res.status === 201) {
         dispatch({ type: SET_LOGIN_USER_LOADING })
-        localStorage.setItem('user', res.data);
-        debugger
-        localStorage.setItem('token', res.data.token);
+        dispatch(actions.setLoginUser(res.data.token))
         return { success: true, data: res };
       } else {
         return { success: false, data: res };
