@@ -2,8 +2,8 @@ import * as constants from "../constants";
 import jwtDecode from "jwt-decode";
 
 const signupUser = (state, action) => {
-  debugger
   localStorage.setItem('token', action.payload);
+  jwtDecode(action.payload)
   return {
     ...state,
     currentUser: action.payload
@@ -11,11 +11,12 @@ const signupUser = (state, action) => {
 };
 
 const loginUser = (state, action) => {
-  debugger
   localStorage.setItem('token', action.payload);
+  jwtDecode(action.payload)
+  console.log(jwtDecode(action.payload))
   return {
     ...state,
-    currentUser: action.payload
+    currentUser: jwtDecode(action.payload)
   }
 };
 
