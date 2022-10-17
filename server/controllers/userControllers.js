@@ -88,3 +88,74 @@ exports.signup = async (req, res, next) => {
     token: token,
   });
 };
+
+//===========================================================================
+
+// LOGIN FUNCTION
+exports.login = async (req, res) => {
+  const { userId, password } = req.body;
+
+  //trying to find if user email exists.
+  let existingUser;
+
+  try {
+    existingUser = await User.findOne({ userId: userId });
+  } catch (err) {
+    const error = new HttpResponse(
+      "Something went wrong while checking user email",
+      500
+    );
+    return res.status(500).json({ response: error });
+  }
+  if (!existingUser) {
+    const error = new HttpResponse(
+      "Invalid credentials, could not log you in.",
+      401
+    );
+    return res.status(401).json({ response: error });
+  }
+  let isValidPassword;
+  try {
+    isValidPassword = await bycrypt.compare(password, existingUser.password);
+  } catch (err) {
+    const error = new HttpResponse(
+      "Something went wrong while comparing passwords",
+      500
+    );
+    return res.status(500).json({ response: error });
+  }
+
+  if (!isValidPassword) {
+    const error = new HttpResponse("Wrong password entered", 401);
+    return res.status(401).json({ response: error });
+  }
+
+  //generating JWT TOKEN- DO NOT TOUCH
+  let token;
+  try {
+    token = jwt.sign(
+      { userId: existingUser.userId, email: existingUser.email, userType: existingUser.userType },
+      "This is Store app Private  Key Word",
+      { expiresIn: "1h" }
+    );
+  } catch (err) {
+    const error = new HttpResponse(
+      "Token generation failed, Login not done",
+      500
+    );
+    return res.status(500).json({ response: error });
+  }
+  res.json({
+    userId: existingUser.userId,
+    email: existingUser.email,
+    userType: existingUser.userType,
+    token: token,
+  });
+
+  res.send({
+    userId: existingUser.userId,
+    email: existingUser.email,
+    userType: existingUser.userType,
+    token: token,
+  });
+};

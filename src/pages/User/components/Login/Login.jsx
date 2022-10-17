@@ -1,6 +1,9 @@
 import { useState } from "react"
+import { useDispatch } from "react-redux"
+import { loginUser } from "../../actions/apiServices"
 
 const Login = () => {
+  const dispatch = useDispatch()
   const [loginDetails, setLoginDetails] = useState({
     email: '',
     password: '',
@@ -13,7 +16,7 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log("loginDetails", loginDetails)
+    dispatch(loginUser(loginDetails))
     setLoginDetails({
       email: "",
       password: "",
