@@ -12,6 +12,7 @@ export const signupUser = (data) => (dispatch) => {
       if (res.status === 201) {
         dispatch({ type: SET_SIGNUP_USER_LOADING })
         localStorage.setItem('user', res.data);
+        debugger
         localStorage.setItem('token', res.data.token);
         return { success: true, data: res };
       } else {
@@ -26,13 +27,16 @@ export const signupUser = (data) => (dispatch) => {
 };
 
 export const loginUser = (data) => (dispatch) => {
+  debugger
   dispatch({ type: SET_LOGIN_USER_LOADING })
   return axios
     .post(`${baseURL}/user/login`, data)
     .then((res) => {
+      debugger
       if (res.status === 201) {
         dispatch({ type: SET_LOGIN_USER_LOADING })
         localStorage.setItem('user', res.data);
+        debugger
         localStorage.setItem('token', res.data.token);
         return { success: true, data: res };
       } else {
