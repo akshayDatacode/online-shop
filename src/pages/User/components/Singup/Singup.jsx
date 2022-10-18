@@ -1,9 +1,12 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { useHistory } from "react-router-dom"
 import { signupUser } from "../../actions"
 
 const Singup = () => {
   const dispatch = useDispatch()
+  const history = useHistory()
+
   const { signupUserLoading } = useSelector(({ user }) => user) || {}
   const [singupDetails, setSingupDetails] = useState({
     email: '',
@@ -21,14 +24,18 @@ const Singup = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    dispatch(signupUser(singupDetails))
-    setSingupDetails({
-      email: '',
-      name: '',
-      address: '',
-      phone: '',
-      password: '',
-      gender: '',
+    dispatch(signupUser(singupDetails)).then(({ res }) => {
+      if (res.status === 201 && res?.data?.token) {
+        history.push('/')
+        setSingupDetails({
+          email: '',
+          name: '',
+          address: '',
+          phone: '',
+          password: '',
+          gender: '',
+        })
+      }
     })
   }
 
