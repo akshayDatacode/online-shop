@@ -20,6 +20,7 @@ const loginUser = (state, action) => {
 };
 
 const logoutUser = (state, action) => {
+  debugger
   localStorage.setItem('token', null);
   return {
     ...state,
