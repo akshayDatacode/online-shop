@@ -26,12 +26,10 @@ export const signupUser = (data) => (dispatch) => {
 };
 
 export const loginUser = (data) => (dispatch) => {
-  debugger
   dispatch({ type: SET_LOGIN_USER_LOADING })
   return axios
     .post(`${baseURL}/user/login`, data)
     .then((res) => {
-      debugger
       if (res.status === 201) {
         dispatch({ type: SET_LOGIN_USER_LOADING })
         dispatch(actions.setLoginUser(res.data.token))

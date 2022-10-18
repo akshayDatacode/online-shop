@@ -15,15 +15,17 @@ const App = () => {
 
   useEffect(() => {
     let token = localStorage.getItem('token')
-    try {
-      let user = jwtDecode(token)
-      if (user?.email) {
-        dispatch(setLoginUser(token))
+    if (token !== 'null') {
+      try {
+        let user = jwtDecode(token)
+        if (user?.email) {
+          dispatch(setLoginUser(token))
+        }
+      } catch (err) {
+        toast.error('Token Invalid', {
+          position: toast.POSITION.TOP_CENTER
+        })
       }
-    } catch (err) {
-      toast.error('Token Invalid', {
-        position: toast.POSITION.TOP_CENTER
-      })
     }
   }, [])
 
