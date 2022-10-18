@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { useLocation } from "react-router";
 
 import { countTotalCartItems } from '../../utility'
+import { DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown } from 'reactstrap';
 
 const Header = ({ drawerClickHandler }) => {
   const location = useLocation();
@@ -38,15 +39,37 @@ const Header = ({ drawerClickHandler }) => {
                 {/* <Link to="/cart"> */}
                 <h3 onClick={() => drawerClickHandler()} className="mx-md-5 mx-2 mb-0 text-primary">{countTotalCartItems(cartCount)} <i className="fas fa-shopping-cart px-2" /></h3>
                 {/* </Link> */}
-                <Link to="/orders">
-                  <h3 className="mx-md-5 mx-2 mb-0">Orders</h3>
-                </Link>
-                <Link to="/add">
-                  <button className="btn btn-success">
-                    <span>Add Product</span>
-                  </button>
-                </Link>
-                <span>{currentUser?.email}</span>
+
+                <UncontrolledDropdown setActiveFromChild>
+                  <DropdownToggle
+                    caret
+                    // className="nav-link"
+                    tag="span"
+                  >
+                    <span>{currentUser?.email}</span>
+                  </DropdownToggle>
+                  <DropdownMenu>
+                    <Link to="/add">
+                      <DropdownItem
+                        tag="span"
+                      >
+                        Add Product
+                      </DropdownItem>
+                    </Link>
+                    <Link to="/orders">
+                      <DropdownItem
+                        tag="span"
+                      >
+                        <span>Orders</span>
+                      </DropdownItem>
+                    </Link>
+                    <DropdownItem
+                      tag="span"
+                    >
+                      Log Out
+                    </DropdownItem>
+                  </DropdownMenu>
+                </UncontrolledDropdown>
               </>
               :
               <>
