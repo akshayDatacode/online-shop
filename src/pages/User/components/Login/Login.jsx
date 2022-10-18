@@ -1,9 +1,12 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux"
+import { useHistory } from "react-router-dom"
 import { loginUser } from "../../actions/apiServices"
 
 const Login = () => {
   const dispatch = useDispatch()
+  const history = useHistory()
+
   const [loginDetails, setLoginDetails] = useState({
     email: '',
     password: '',
@@ -16,10 +19,14 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    dispatch(loginUser(loginDetails))
-    setLoginDetails({
-      email: "",
-      password: "",
+    dispatch(loginUser(loginDetails)).then(({ res }) => {
+      if (res.status === 201 && res?.data?.token) {
+        history.push('/')
+        setLoginDetails({
+          email: "",
+          password: "",
+        })
+      }
     })
   }
 
