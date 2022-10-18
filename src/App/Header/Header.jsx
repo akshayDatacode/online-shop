@@ -31,23 +31,38 @@ const Header = ({ drawerClickHandler }) => {
             />
           </Link>
         </div>
-        {
-          currentUser?.email &&
-          <div className="col-md-6 col-12 px-md-2 px-0 text-right d-flex align-items-center justify-content-end">
-            {/* <Link to="/cart"> */}
-            <h3 onClick={() => drawerClickHandler()} className="mx-md-5 mx-2 mb-0 text-primary">{countTotalCartItems(cartCount)} <i className="fas fa-shopping-cart px-2" /></h3>
-            {/* </Link> */}
-            <Link to="/orders">
-              <h3 className="mx-md-5 mx-2 mb-0">Orders</h3>
-            </Link>
-            <Link to="/add">
-              <button className="btn btn-success">
-                <span>Add Product</span>
-              </button>
-            </Link>
-            <span>{currentUser?.email}</span>
-          </div>
-        }
+        <div className="col-md-6 col-12 px-md-2 px-0 text-right d-flex align-items-center justify-content-end">
+          {
+            (currentUser?.email) ?
+              <>
+                {/* <Link to="/cart"> */}
+                <h3 onClick={() => drawerClickHandler()} className="mx-md-5 mx-2 mb-0 text-primary">{countTotalCartItems(cartCount)} <i className="fas fa-shopping-cart px-2" /></h3>
+                {/* </Link> */}
+                <Link to="/orders">
+                  <h3 className="mx-md-5 mx-2 mb-0">Orders</h3>
+                </Link>
+                <Link to="/add">
+                  <button className="btn btn-success">
+                    <span>Add Product</span>
+                  </button>
+                </Link>
+                <span>{currentUser?.email}</span>
+              </>
+              :
+              <>
+                <Link to="/signup">
+                  <button className="btn btn-primary">
+                    <span>Sign UP</span>
+                  </button>
+                </Link>
+                <Link to="/login">
+                  <button className="btn btn-primary mx-2">
+                    <span>Login</span>
+                  </button>
+                </Link>
+              </>
+          }
+        </div>
       </div>
     </>
   )

@@ -35,7 +35,7 @@ export const loginUser = (data) => (dispatch) => {
       if (res.status === 201) {
         dispatch({ type: SET_LOGIN_USER_LOADING })
         dispatch(actions.setLoginUser(res.data.token))
-        return { success: true, data: res };
+        return { success: true, res: res };
       } else {
         return { success: false, data: res };
       }
