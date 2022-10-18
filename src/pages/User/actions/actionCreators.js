@@ -12,7 +12,6 @@ export const setLoginUser = (data) => {
   }
 };
 
-export const setLogoutUser = (data) => ({
+export const setLogoutUser = () => ({
   type: SET_LOGOUT_USER,
-  payload: data,
 });

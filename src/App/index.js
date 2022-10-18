@@ -5,7 +5,7 @@ import BackDrop from "./Header/BackDrop";
 import AppRoutes from "./AppRoutes";
 import { ToastContainer } from "react-toastify";
 import jwtDecode from "jwt-decode";
-import { setLoginUser } from "../pages/User/actions";
+import { setLoginUser, setLogoutUser } from "../pages/User/actions";
 import { useDispatch } from "react-redux";
 import { toast } from 'react-toastify';
 
@@ -15,11 +15,21 @@ const App = () => {
 
   useEffect(() => {
     let token = localStorage.getItem('token')
-    if (token !== 'null') {
+    debugger
+    if (token !== 'null' && token !== null) {
       try {
         let user = jwtDecode(token)
-        if (user?.email) {
+        if (user.exp * 1000 < Date.now()) {
+          dispatch(setLogoutUser());
+          toast.error('Token Expired', {
+            position: toast.POSITION.TOP_CENTER
+          })
+        } else if (user?.email) {
           dispatch(setLoginUser(token))
+        } else {
+          toast.error('Token Invalid', {
+            position: toast.POSITION.TOP_CENTER
+          })
         }
       } catch (err) {
         toast.error('Token Invalid', {
