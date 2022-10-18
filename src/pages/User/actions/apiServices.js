@@ -13,9 +13,9 @@ export const signupUser = (data) => (dispatch) => {
       if (res.status === 201) {
         dispatch({ type: SET_SIGNUP_USER_LOADING })
         dispatch(actions.setSignupUser(res.data.token))
-        return { success: true, data: res };
+        return { success: true, res: res };
       } else {
-        return { success: false, data: res };
+        return { success: false, res: res };
       }
     })
     .catch((error) => {
@@ -37,7 +37,7 @@ export const loginUser = (data) => (dispatch) => {
         dispatch(actions.setLoginUser(res.data.token))
         return { success: true, res: res };
       } else {
-        return { success: false, data: res };
+        return { success: false, res: res };
       }
     })
     .catch((error) => {
