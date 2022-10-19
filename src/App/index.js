@@ -15,7 +15,6 @@ const App = () => {
 
   useEffect(() => {
     let token = localStorage.getItem('token')
-    debugger
     if (token !== 'null' && token !== null) {
       try {
         let user = jwtDecode(token)
