@@ -71,7 +71,7 @@ exports.signup = async (req, res, next) => {
     token = jwt.sign(
       { userId: createdUser.userId, email: createdUser.email, userType: createdUser.userType },
       "This is store-app Prive Key",
-      { expiresIn: "30s" }
+      { expiresIn: "1h" }
     );
   } catch (err) {
     const error = new HttpResponse(
@@ -136,7 +136,7 @@ exports.login = async (req, res) => {
     token = jwt.sign(
       { userId: existingUser.userId, email: existingUser.email, userType: existingUser.userType },
       "This is Store app Private  Key Word",
-      { expiresIn: "30s" }
+      { expiresIn: "1h" }
     );
   } catch (err) {
     const error = new HttpResponse(

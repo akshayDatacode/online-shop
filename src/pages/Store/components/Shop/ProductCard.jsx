@@ -34,6 +34,13 @@ const ProductCard = ({
           <div className="card-body px-3">
             <h6>{product.title}</h6>
             <small>{handleTextVisibility(product.description, 50)}</small>
+            <div className="">
+              {
+                product?.categories.map((item) => (
+                  <small className='me-1 px-2 rounded bg-primary text-white'>{item.category}</small>
+                ))
+              }
+            </div>
           </div>
           <div className="footer card-footer px-3 border-none border-top-0">
             <div className="d-flex align-items-center justify-content-between">
