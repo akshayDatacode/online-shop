@@ -10,6 +10,7 @@ const addProduct = async (req, res, next) => {
     image,
     price,
     description,
+    category,
   });
 
   try {

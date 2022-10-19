@@ -45,7 +45,7 @@ const Header = ({ drawerClickHandler }) => {
             (currentUser?.email) ?
               <>
                 {/* <Link to="/cart"> */}
-                <h3 onClick={() => drawerClickHandler()} className="mx-md-5 mx-2 mb-0 text-primary">{countTotalCartItems(cartCount)} <i className="fas fa-shopping-cart px-2" /></h3>
+                <h3 onClick={() => drawerClickHandler()} className="mx-md-5 mx-2 mb-0 text-primary">{countTotalCartItems(cartCount)} <i className="fas fa-shopping-cart" /></h3>
                 {/* </Link> */}
 
                 <UncontrolledDropdown setActiveFromChild>

@@ -9,6 +9,7 @@ const productSchema = new Schema(
     description: { type: String },
     price: { type: Number },
     image: { type: String },
+    category: { type: Array },
   },
   {
     timestamps: [{ createdAt: "created_at", updatedAt: "updated_at" }],
