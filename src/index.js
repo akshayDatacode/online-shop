@@ -12,6 +12,7 @@ import "./assets/scss/style.scss";
 import "./assets/scss/cart-drawer.scss";
 import './assets/scss/user.scss';
 import 'react-rangeslider/lib/index.css'
+import "react-widgets/styles.css";
 
 ReactDOM.render(
   <React.StrictMode>

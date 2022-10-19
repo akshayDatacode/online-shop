@@ -2,7 +2,7 @@ const Product = require("../models/productModel");
 const Order = require("../models/ordersModel");
 
 const addProduct = async (req, res, next) => {
-  const { id, title, image, price, description } = req.body;
+  const { id, title, image, price, description, categories } = req.body;
 
   const createdProduct = new Product({
     id,
@@ -10,6 +10,7 @@ const addProduct = async (req, res, next) => {
     image,
     price,
     description,
+    categories,
   });
 
   try {

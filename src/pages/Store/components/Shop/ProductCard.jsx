@@ -23,7 +23,7 @@ const ProductCard = ({
     <>
       <div key={i} className="col-md-3 col-12 px-2 mb-3 product-card">
         <div className="border shadow rounded-lg p-0 card h-100 ">
-          <div className="card-image mb-3">
+          <div className="card-image mb-2">
             <img
               src={product.image}
               alt="loading.."
@@ -32,12 +32,19 @@ const ProductCard = ({
             />
           </div>
           <div className="card-body px-3">
-            <h5>{product.title}</h5>
+            <h6>{product.title}</h6>
             <small>{handleTextVisibility(product.description, 50)}</small>
+            <div className="">
+              {
+                product?.categories.map((item) => (
+                  <small className='me-1 px-2 rounded bg-primary text-white'>{item.category}</small>
+                ))
+              }
+            </div>
           </div>
           <div className="footer card-footer px-3 border-none border-top-0">
             <div className="d-flex align-items-center justify-content-between">
-              <h6 className="my-3 text-success"><i className="fas fa-money-bill-wave" /> {product.price} <i className="fal fa-rupee-sign" /></h6>
+              <h6 className="my-2 text-success">{product.price} <i className="fal fa-rupee-sign" /></h6>
               {
                 !added ?
                   <div className="">

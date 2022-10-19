@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { toast } from 'react-toastify';
+import { Multiselect } from "react-widgets";
 
 import FileInput from '../../../../components/SharedComponents/FileInput';
+import { category } from '../../../../utility/options';
 import { addProduct } from '../../actions'
 
 const AddProduct = () => {
@@ -10,6 +12,7 @@ const AddProduct = () => {
   const [description, setDescription] = useState()
   const [title, setTitle] = useState()
   const [image, setImage] = useState()
+  const [categories, setCategories] = useState()
 
   const onImageChoose = (event) => {
     const finalFile = event.target.files[0];
@@ -32,6 +35,7 @@ const AddProduct = () => {
       description,
       price,
       image,
+      categories,
     }
     addProduct(data).then((res) => {
       if (res) {
@@ -44,6 +48,9 @@ const AddProduct = () => {
         setTitle('')
       }
     })
+  }
+  const onChangeCagetory = (value) => {
+    setCategories(value)
   }
 
   return (
@@ -65,6 +72,15 @@ const AddProduct = () => {
               <input onChange={(e) => setPrice(e.target.value)} value={price} type="number" className="form-control" id="price" placeholder="Price" />
             </div>
             {/* {image && <img className="form-group image my-3" src={image} />} */}
+            <Multiselect
+              data={category}
+              dataKey={"value"}
+              textField={'category'}
+              // defaultValue={['Javascript']}
+              placeholder={'Select Product Category'}
+              value={categories}
+              onChange={(value) => onChangeCagetory(value)}
+            />
             <div className="form-group my-3">
               <label>Product Image</label>
               {/* <FileBase64
