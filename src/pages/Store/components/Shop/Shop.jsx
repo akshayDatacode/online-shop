@@ -17,6 +17,7 @@ const Shop = () => {
     search: '',
     priceRageStart: 0,
     priceRageEnd: 20,
+    categoriesList: [],
   })
 
   useEffect(() => {
@@ -37,7 +38,6 @@ const Shop = () => {
   }
 
   const handleFilterChange = (event) => {
-    debugger
     const { name, value } = event.target
     setFilterQuery({ ...filterQuery, [name]: value })
     getProducts({ ...filterQuery, [name]: value }).then((res) => {
@@ -46,8 +46,6 @@ const Shop = () => {
       }
     })
   }
-
-  // const filteredList = products.filter(item => item.title.toUpperCase().includes(search.toUpperCase()) || item.description.toUpperCase().includes(search.toUpperCase()))
 
   return (
     <>
@@ -78,7 +76,7 @@ const Shop = () => {
           </div>
           <div className="row mx-0 p-md-4 p-0">
             <div className="col-12 col-md-2 px-0 border">
-              <Filter filterQuery={filterQuery} handleFilterChange={handleFilterChange} />
+              <Filter setFilterQuery={setFilterQuery} filterQuery={filterQuery} handleFilterChange={handleFilterChange} />
             </div>
             <div className="col-12 col-md-10">
               <div className="row mx-0 card-group">

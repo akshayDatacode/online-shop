@@ -34,6 +34,8 @@ const Filter = ({
       selected.push(value);
     }
     setCategoriesList([...selected])
+    const obj = { target: { name: 'categoriesList', value: [...selected] } }
+    handleFilterChange(obj)
   }
 
   const Checkbox = ({ obj, index, handleCategoryChecklist }) => {
@@ -51,6 +53,9 @@ const Filter = ({
       </div>
     );
   };
+
+  console.log("categoriesList", categoriesList)
+
 
   return (
     <>

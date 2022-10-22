@@ -21,6 +21,7 @@ export const getProducts = (filter) => {
       search: filter?.search,
       priceRageStart: filter?.priceRageStart,
       priceRageEnd: filter?.priceRageEnd,
+      categoriesList: filter?.categoriesList,
     })}`)
     .then(({ data }) => {
       return { success: true, data };
