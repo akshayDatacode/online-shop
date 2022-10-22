@@ -1,12 +1,16 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useMemo } from 'react';
 import Slider from 'react-rangeslider';
 import { Collapse } from 'reactstrap';
+
+import { category } from "../../../../utility/options";
 
 const Filter = ({
   handleFilterChange,
   filterQuery,
 }) => {
   const [activeTable, setActiveTable] = useState('');
+  const [categoriesList, setCategoriesList] = useState([]);
 
   const toggle = (openTable) => {
     if (openTable === activeTable) {
@@ -19,6 +23,34 @@ const Filter = ({
     const obj = { target: { name: 'priceRageEnd', value: priceRange } }
     handleFilterChange(obj)
   }
+
+  const handleCategoryChecklist = (event) => {
+    const { value } = event.target
+    const selected = categoriesList;
+    let find = selected.indexOf(value);
+    if (find > -1 && selected.length >= 1) {
+      selected.splice(find, 1);
+    } else if (find === -1) {
+      selected.push(value);
+    }
+    setCategoriesList([...selected])
+  }
+
+  const Checkbox = ({ obj, index, handleCategoryChecklist }) => {
+    return (
+      <div>
+        <input
+          type="checkbox"
+          id={`custom-checkbox-${index}`}
+          name={obj.category}
+          value={obj.value}
+          checked={categoriesList.includes(obj.value)}
+          onChange={(e) => handleCategoryChecklist(e)}
+        />
+        <span>{obj.category}</span>
+      </div>
+    );
+  };
 
   return (
     <>
@@ -43,6 +75,15 @@ const Filter = ({
               <div className="row mx-0">
                 <div className="col-12">
                   <p>Filter by Categories</p>
+                  {category && category.map((obj, index) => (
+                    <p key={index}>
+                      <Checkbox
+                        obj={obj}
+                        index={index}
+                        handleCategoryChecklist={handleCategoryChecklist}
+                      />
+                    </p>
+                  ))}
                 </div>
               </div>
             </Collapse>
@@ -75,7 +116,7 @@ const Filter = ({
             </Collapse>
           </div>
         </div>
-      </div>
+      </div >
     </>
   )
 }
