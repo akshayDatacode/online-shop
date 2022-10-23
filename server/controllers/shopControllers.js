@@ -40,15 +40,18 @@ const getProduct = async (req, res) => {
 };
 
 const getProducts = async (req, res) => {
-  const { search, priceRageStart, priceRageEnd } = req.query
-
+  const { search, priceRageStart, priceRageEnd, categoriesList } = req.query
   let Query = {}
   if (search) {
     let regex = new RegExp(search, 'i')
     Query = { title: regex }
   }
-  if (priceRageStart && priceRageStart) {
+  if (priceRageStart && priceRageEnd) {
     Query = { ...Query, price: { $gte: priceRageStart, $lte: priceRageEnd } }
+  }
+  if (categoriesList && categoriesList.length > 0) {
+    let categoriesFilterList = categoriesList.split(",")
+    Query = { ...Query, categories: { $elemMatch: { value: { $in: categoriesFilterList } } } }
   }
 
   try {
