@@ -70,7 +70,7 @@ exports.signup = async (req, res, next) => {
   try {
     token = jwt.sign(
       { userId: createdUser.userId, email: createdUser.email, userType: createdUser.userType },
-      "This is store-app Prive Key",
+      "this is www.datacode.in private key",
       { expiresIn: "1h" }
     );
   } catch (err) {
@@ -135,7 +135,7 @@ exports.login = async (req, res) => {
   try {
     token = jwt.sign(
       { userId: existingUser.userId, email: existingUser.email, userType: existingUser.userType },
-      "This is Store app Private  Key Word",
+      "this is www.datacode.in private key",
       { expiresIn: "1h" }
     );
   } catch (err) {
