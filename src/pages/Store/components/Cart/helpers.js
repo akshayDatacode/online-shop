@@ -19,7 +19,7 @@ export const getColumns = (handleRemoveFromCart, handleSetQuantity) => [
     formatter: (cell, row) => (
       <div>
         <img
-          src={row.image}
+          src={row.image ? row.image : process.env.REACT_APP_DEFAULT_IMAGE}
           className="rounded-circle"
           height="80"
           width="80"
