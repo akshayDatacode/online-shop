@@ -25,7 +25,7 @@ const ProductCard = ({
         <div className="border shadow rounded-lg p-0 card h-100 ">
           <div className="card-image mb-2">
             <img
-              src={product.image}
+              src={product.image ? product.image : process.env.REACT_APP_DEFAULT_IMAGE}
               alt="loading.."
               className="mx-auto my-auto image img-fluid"
               sizes="(min-width: 1122px) 296px,(min-width: 866px) 218px,(max-width: 610px) 202px,202px"

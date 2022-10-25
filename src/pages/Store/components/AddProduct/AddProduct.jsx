@@ -11,7 +11,7 @@ const AddProduct = () => {
   const [price, setPrice] = useState()
   const [description, setDescription] = useState()
   const [title, setTitle] = useState()
-  const [image, setImage] = useState()
+  const [image, setImage] = useState(process.env.REACT_APP_DEFAULT_IMAGE)
   const [categories, setCategories] = useState()
 
   const onImageChoose = (event) => {
