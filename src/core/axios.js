@@ -6,7 +6,6 @@ export const setupAxiosInterceptors = () => {
 	const onRequestSuccess = request => {
 		const token = localStorage.getItem('token')
 		console.log("token------->", token)
-		debugger
 		if (token) {
 			request.headers = {
 				// "X-Auth-Key": email,
