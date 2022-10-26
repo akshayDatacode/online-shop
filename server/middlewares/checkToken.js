@@ -12,7 +12,7 @@ module.exports = (req, res, next) => {
         }
         const decodedToken = jwt.verify(token, 'this is www.datacode.in private key');
         console.log("SDF", decodedToken)
-        req.userData = { userId: decodedToken.userId, email: decodedToken.email, userType: decodedToken.userType };
+        req.userData = { _id: decodedToken._id, email: decodedToken.email, userType: decodedToken.userType };
         next();
     } catch (err) {
         const error = new HttpResponse('Authentication failed!', 403);

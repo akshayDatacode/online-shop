@@ -69,7 +69,7 @@ exports.signup = async (req, res, next) => {
   let token;
   try {
     token = jwt.sign(
-      { userId: createdUser.userId, email: createdUser.email, userType: createdUser.userType },
+      { _id: createdUser._id, email: createdUser.email, userType: createdUser.userType },
       "this is www.datacode.in private key",
       { expiresIn: "1h" }
     );
@@ -134,7 +134,7 @@ exports.login = async (req, res) => {
   let token;
   try {
     token = jwt.sign(
-      { userId: existingUser.userId, email: existingUser.email, userType: existingUser.userType },
+      { _id: existingUser._id, email: existingUser.email, userType: existingUser.userType },
       "this is www.datacode.in private key",
       { expiresIn: "1h" }
     );
