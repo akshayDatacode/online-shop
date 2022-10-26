@@ -41,6 +41,7 @@ const getProduct = async (req, res) => {
 
 const getProducts = async (req, res) => {
   const { search, priceRageStart, priceRageEnd, categoriesList } = req.query
+  console.log("userData",req.userData)
   let Query = {}
   if (search) {
     let regex = new RegExp(search, 'i')
