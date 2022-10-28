@@ -54,7 +54,6 @@ export const getOrders = () => {
 };
 
 export const getProduct = (id) => (dispatch) => {
-  debugger
   return axios
     .get(`${api}/get_product/${id}`)
     .then(({ data }) => {

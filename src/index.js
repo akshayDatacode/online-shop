@@ -11,8 +11,11 @@ import "react-toastify/dist/ReactToastify.css";
 import "./assets/scss/style.scss";
 import "./assets/scss/cart-drawer.scss";
 import './assets/scss/user.scss';
+import './assets/scss/product-page.scss'
+
 import 'react-rangeslider/lib/index.css'
 import "react-widgets/styles.css";
+
 
 setupAxiosInterceptors();
 ReactDOM.render(
