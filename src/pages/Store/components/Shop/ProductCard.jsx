@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 
 import { handleTextVisibility } from '../../../../utility'
 import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 const ProductCard = ({
   product, i, handleAddToCart
@@ -24,12 +25,14 @@ const ProductCard = ({
       <div key={i} className="col-md-3 col-12 px-2 mb-3 product-card">
         <div className="border shadow rounded-lg p-0 card h-100 ">
           <div className="card-image mb-2">
-            <img
-              src={product.image ? product.image : process.env.REACT_APP_DEFAULT_IMAGE}
-              alt="loading.."
-              className="mx-auto my-auto image img-fluid"
-              sizes="(min-width: 1122px) 296px,(min-width: 866px) 218px,(max-width: 610px) 202px,202px"
-            />
+            <Link to={`/product/${product._id}`}>
+              <img
+                src={product.image ? product.image : process.env.REACT_APP_DEFAULT_IMAGE}
+                alt="loading.."
+                className="mx-auto my-auto image img-fluid"
+                sizes="(min-width: 1122px) 296px,(min-width: 866px) 218px,(max-width: 610px) 202px,202px"
+              />
+            </Link>
           </div>
           <div className="card-body px-3">
             <h6>{product.title}</h6>

@@ -31,7 +31,8 @@ const addProduct = async (req, res, next) => {
 const getProduct = async (req, res) => {
   const { id } = req.params;
   try {
-    const product = await Product.find({ id: id });
+    const product = await Product.findOne({ _id: id });
+    console.log("product", product)
     return res.send({ product: product, success: true });
   } catch (error) {
     console.error(error);
@@ -41,7 +42,7 @@ const getProduct = async (req, res) => {
 
 const getProducts = async (req, res) => {
   const { search, priceRageStart, priceRageEnd, categoriesList } = req.query
-  console.log("userData",req.userData)
+  console.log("userData", req.userData)
   let Query = {}
   if (search) {
     let regex = new RegExp(search, 'i')
