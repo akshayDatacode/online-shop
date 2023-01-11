@@ -63,3 +63,15 @@ export const getProduct = (id) => (dispatch) => {
       console.log("get order error", error);
     });
 };
+
+export const completeCartOrder = (orderList) => {
+  console.log("sdf", orderList)
+  return axios
+    .post(`${api}/payment/cart_order`, orderList)
+    .then(({ data }) => {
+      return { success: true, data };
+    })
+    .catch((error) => {
+      console.log("post orderlist error", error);
+    })
+}

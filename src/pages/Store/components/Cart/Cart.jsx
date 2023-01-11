@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import BootstrapTable from 'react-bootstrap-table-next'
 
-import { deleteCartItem, clearCart, setQuantity, addOrder } from '../../actions'
+import { deleteCartItem, clearCart, setQuantity, addOrder, completeCartOrder } from '../../actions'
 import CompleteOrderModal from './CompleteOrderModal'
 import { getColumns, daysCodeList } from './helpers'
 
@@ -50,6 +50,12 @@ const Cart = ({
       total,
     }
     addOrder(data).then((res) => {
+      if (res) {
+        dispatch(clearCart())
+        setOpenModal(!openModal)
+      }
+    })
+    completeCartOrder(data).then((res) => {
       if (res) {
         dispatch(clearCart())
         setOpenModal(!openModal)
