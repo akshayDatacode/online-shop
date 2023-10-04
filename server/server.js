@@ -1,9 +1,13 @@
 const express = require("express");
+const dotenv = require("dotenv");
+dotenv.config({ path: "./.env" });
+console.log(process.env.RAZORPAY_KEY_ID)
 const path = require("path");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const shopRoutes = require("./routes/shopRoutes");
 const userRoutes = require("./routes/userRoutes");
+const paymentRoutes = require("./routes/paymentRoutes");
 const mongo = require("./configs/dbConfig");
 const app = express();
 
@@ -27,6 +31,7 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use("/api/payment", paymentRoutes)
 app.use("/api", shopRoutes);
 
 app.listen(port, () => {

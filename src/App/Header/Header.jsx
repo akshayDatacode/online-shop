@@ -32,12 +32,13 @@ const Header = ({ drawerClickHandler }) => {
       >
         <div className="col-md-6 col-12 px-md-5 px-0 text-left d-flex align-items-center justify-content-between">
           <Link to='/'>
-            <img
+            {/* <img
               alt="avtar"
               src={require("../../assets/images/logo.svg").default}
               className="img-fluid"
               width="220"
-            />
+            /> */}
+            <h1>Online Shop 2023</h1>
           </Link>
         </div>
         <div className="col-md-6 col-12 px-md-2 px-0 text-right d-flex align-items-center justify-content-end">
