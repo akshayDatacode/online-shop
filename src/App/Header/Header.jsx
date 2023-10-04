@@ -38,7 +38,7 @@ const Header = ({ drawerClickHandler }) => {
               className="img-fluid"
               width="220"
             /> */}
-            <h1>Online Shop</h1>
+            <h1>Online Shop 2023</h1>
           </Link>
         </div>
         <div className="col-md-6 col-12 px-md-2 px-0 text-right d-flex align-items-center justify-content-end">
