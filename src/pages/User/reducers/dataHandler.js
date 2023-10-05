@@ -27,8 +27,14 @@ const logoutUser = (state, action) => {
   }
 };
 
+const setAuthError = (state, action) => ({
+  ...state,
+  authError: action.payload
+})
+
 export const dataHandlers = {
   [constants.SET_SIGNUP_USER]: signupUser,
   [constants.SET_LOGIN_USER]: loginUser,
   [constants.SET_LOGOUT_USER]: logoutUser,
+  [constants.SET_AUTH_ERROR]: setAuthError,
 };

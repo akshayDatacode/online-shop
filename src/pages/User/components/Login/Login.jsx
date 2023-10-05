@@ -7,10 +7,9 @@ import { loginUser } from "../../actions/apiServices"
 
 const Login = () => {
   const dispatch = useDispatch()
-  const { loginUserLoading } = useSelector(({ user }) => user) || {}
+  const { loginUserLoading, authError } = useSelector(({ user }) => user) || {}
 
   const history = useHistory()
-
   const [loginDetails, setLoginDetails] = useState({
     email: '',
     password: '',
@@ -24,7 +23,7 @@ const Login = () => {
   const handleSubmit = (event) => {
     event.preventDefault()
     dispatch(loginUser(loginDetails)).then(({ res }) => {
-      if (res.status === 201 && res?.data?.token) {
+      if (res?.status === 201 && res?.data?.token) {
         history.push('/')
         setLoginDetails({
           email: "",
@@ -55,6 +54,7 @@ const Login = () => {
                 <div className="text-center mt-4">
                   <div className="btn btn-primary" onClick={(e) => handleSubmit(e)}>Login</div>
                 </div>
+                {authError && <p>{authError}</p>}
               </form>
           }
         </div>

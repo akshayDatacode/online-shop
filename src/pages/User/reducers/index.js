@@ -5,7 +5,8 @@ import { dataHandlers } from "./dataHandler";
 const initialState = {
   signupUserLoading: false,
   loginUserLoading: false,
-  currentUser: {}
+  currentUser: {},
+  authError: ''
 };
 
 const handlers = {
