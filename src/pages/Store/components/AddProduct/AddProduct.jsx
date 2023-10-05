@@ -76,7 +76,6 @@ const AddProduct = () => {
               data={category}
               dataKey={"value"}
               textField={'category'}
-              // defaultValue={['Javascript']}
               placeholder={'Select Product Category'}
               value={categories}
               onChange={(value) => onChangeCagetory(value)}
