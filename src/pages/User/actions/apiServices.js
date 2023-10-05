@@ -41,6 +41,7 @@ export const loginUser = (data) => (dispatch) => {
     .catch((error) => {
       dispatch({ type: SET_LOGIN_USER_LOADING })
       console.log("user login Error", error);
+      dispatch(actions.setAuthError(error.response.data.response.message))
       return { success: false, error: error };
     });
 };
