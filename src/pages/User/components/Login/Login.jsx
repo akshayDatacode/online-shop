@@ -54,7 +54,7 @@ const Login = () => {
                 <div className="text-center mt-4">
                   <div className="btn btn-primary" onClick={(e) => handleSubmit(e)}>Login</div>
                 </div>
-                {authError && <p style={{color: "red"}}>{authError}</p>}
+                {authError && <small style={{color: "red"}}>{authError}</small>}
               </form>
           }
         </div>
