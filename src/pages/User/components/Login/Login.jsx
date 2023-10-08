@@ -52,7 +52,7 @@ const Login = () => {
                   <input type="password" name="password" onChange={(e) => handleChange(e)} value={loginDetails.password} class="form-control form-control-lg" id="inputPassword" placeholder="Password" />
                 </div>
                 <div className="text-center mt-4">
-                  <div className="btn btn-primary" onClick={(e) => handleSubmit(e)}>Login</div>
+                  <div className="btn btn-primary" onClick={(e) => handleSubmit(e)}>Login User</div>
                 </div>
                 {authError && <small style={{color: "red"}}>{authError}</small>}
               </form>
