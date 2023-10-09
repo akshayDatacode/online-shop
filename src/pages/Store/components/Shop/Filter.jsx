@@ -79,7 +79,7 @@ const Filter = ({
             <Collapse isOpen={activeTable === 'category'}>
               <div className="row mx-0">
                 <div className="col-12">
-                  <p>Filter by Categories</p>
+                  <p>Filter by Product Categories</p>
                   {category && category.map((obj, index) => (
                     <p key={index}>
                       <Checkbox
