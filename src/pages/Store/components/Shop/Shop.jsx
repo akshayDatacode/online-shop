@@ -85,7 +85,7 @@ const Shop = () => {
                     <ProductCard key={i} product={item} i={i} handleAddToCart={handleAddToCart} />
                   ))
                     :
-                    <h6>No Items in Store please <Link to="/add">Add Product</Link></h6>
+                    <h6>No Items in store please <Link to="/add">Add Product</Link></h6>
                 }
               </div>
             </div>
