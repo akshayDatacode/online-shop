@@ -110,7 +110,7 @@ const Filter = ({
             <Collapse isOpen={activeTable === 'price'}>
               <div className="row mx-0">
                 <div className="col-12">
-                  <p>Filter by Price</p>
+                  <p>Filter By Price</p>
                   <Slider
                     value={filterQuery.priceRageEnd}
                     orientation="horizontal" //vertical
