@@ -8,9 +8,9 @@ import { addProduct } from '../../actions'
 
 const AddProduct = () => {
 
-  const [price, setPrice] = useState()
-  const [description, setDescription] = useState()
-  const [title, setTitle] = useState()
+  const [price, setPrice] = useState("")
+  const [description, setDescription] = useState("")
+  const [title, setTitle] = useState("")
   const [image, setImage] = useState(process.env.REACT_APP_DEFAULT_IMAGE)
   const [categories, setCategories] = useState()
   const [formErrors, setFormErrors] = useState({
@@ -18,6 +18,7 @@ const AddProduct = () => {
     price: false,
     description: false,
   })
+  const [isError, setIsError] = useState(false)
 
   const onImageChoose = (event) => {
     const finalFile = event.target.files[0];
@@ -34,6 +35,7 @@ const AddProduct = () => {
   }
 
   const handleFormValidation = (e) => {
+    setIsError(false)
     if (e.target.value.trim() === '') {
       setFormErrors({ ...formErrors, [e.target.name]: true })
     } else {
@@ -50,22 +52,26 @@ const AddProduct = () => {
       image,
       categories,
     }
-    addProduct(data).then((res) => {
-      if (res) {
-        toast.success('Product successfully created', {
-          position: toast.POSITION.TOP_CENTER
-        })
-        setDescription('')
-        setPrice('')
-        setImage('')
-        setTitle('')
-      }
-    })
+    if (title.trim() !== "" && description.trim() !== "" && price.trim() !== "") {
+      addProduct(data).then((res) => {
+        if (res) {
+          toast.success('Product successfully created', {
+            position: toast.POSITION.TOP_CENTER
+          })
+          setDescription('')
+          setPrice('')
+          setImage('')
+          setTitle('')
+        }
+      })
+    } else {
+      setIsError(true)
+    }
   }
   const onChangeCagetory = (value) => {
     setCategories(value)
   }
-  console.log("Form Error", formErrors)
+
   return (
     <>
       <div className="row mt-5 p-3 mx-0 d-flex justify-content-center">
@@ -75,17 +81,17 @@ const AddProduct = () => {
             <div className="form-group my-3">
               <label for="title">Title</label>
               <input type="text" onBlur={(e) => handleFormValidation(e)} onChange={(e) => setTitle(e.target.value)} value={title} className="form-control" name="title" id="title" aria-describedby="title" placeholder="Title" />
-              {formErrors.title && <small className='text-danger'>Title Field Required</small>}
+              {(isError || formErrors.title) && <small className='text-danger'>Title Field Required</small>}
             </div>
             <div className="form-group my-3">
               <label for="description">Description</label>
               <input type="text" onBlur={(e) => handleFormValidation(e)} onChange={(e) => setDescription(e.target.value)} value={description} className="form-control" name="description" id="description" placeholder="Description" />
-              {formErrors.description && <small className='text-danger'>Description Field Required</small>}
+              {(isError || formErrors.description) && <small className='text-danger'>Description Field Required</small>}
             </div>
             <div className="form-group my-3">
               <label for="price">Price</label>
               <input onBlur={(e) => handleFormValidation(e)} onChange={(e) => setPrice(e.target.value)} name="price" value={price} type="number" className="form-control" id="price" placeholder="Price" />
-              {formErrors.price && <small className='text-danger'>Price Field Required</small>}
+              {(isError || formErrors.price) && <small className='text-danger'>Price Field Required</small>}
             </div>
             {/* {image && <img className="form-group image my-3" src={image} />} */}
             <Multiselect
