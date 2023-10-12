@@ -75,17 +75,17 @@ const AddProduct = () => {
             <div className="form-group my-3">
               <label for="title">Title</label>
               <input type="text" onBlur={(e) => handleFormValidation(e)} onChange={(e) => setTitle(e.target.value)} value={title} className="form-control" name="title" id="title" aria-describedby="title" placeholder="Title" />
-              {formErrors.title && <small className='text-danger'>Field Required</small>}
+              {formErrors.title && <small className='text-danger'>Title Field Required</small>}
             </div>
             <div className="form-group my-3">
               <label for="description">Description</label>
               <input type="text" onBlur={(e) => handleFormValidation(e)} onChange={(e) => setDescription(e.target.value)} value={description} className="form-control" name="description" id="description" placeholder="Description" />
-              {formErrors.description && <small className='text-danger'>Field Required</small>}
+              {formErrors.description && <small className='text-danger'>Description Field Required</small>}
             </div>
             <div className="form-group my-3">
               <label for="price">Price</label>
               <input onBlur={(e) => handleFormValidation(e)} onChange={(e) => setPrice(e.target.value)} name="price" value={price} type="number" className="form-control" id="price" placeholder="Price" />
-              {formErrors.price && <small className='text-danger'>Field Required</small>}
+              {formErrors.price && <small className='text-danger'>Price Field Required</small>}
             </div>
             {/* {image && <img className="form-group image my-3" src={image} />} */}
             <Multiselect
