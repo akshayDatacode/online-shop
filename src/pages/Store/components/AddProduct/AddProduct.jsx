@@ -13,6 +13,11 @@ const AddProduct = () => {
   const [title, setTitle] = useState()
   const [image, setImage] = useState(process.env.REACT_APP_DEFAULT_IMAGE)
   const [categories, setCategories] = useState()
+  const [formErrors, setFormErrors] = useState({
+    title: false,
+    price: false,
+    description: false,
+  })
 
   const onImageChoose = (event) => {
     const finalFile = event.target.files[0];
@@ -26,6 +31,14 @@ const AddProduct = () => {
       },
       false,
     );
+  }
+
+  const handleFormValidation = (e) => {
+    if (e.target.value.trim() === '') {
+      setFormErrors({ ...formErrors, [e.target.name]: true })
+    } else {
+      setFormErrors({ ...formErrors, [e.target.name]: false })
+    }
   }
 
   const handleSubmit = (e) => {
@@ -52,7 +65,7 @@ const AddProduct = () => {
   const onChangeCagetory = (value) => {
     setCategories(value)
   }
-
+  console.log("Form Error", formErrors)
   return (
     <>
       <div className="row mt-5 p-3 mx-0 d-flex justify-content-center">
@@ -61,15 +74,18 @@ const AddProduct = () => {
           <form>
             <div className="form-group my-3">
               <label for="title">Title</label>
-              <input type="text" onChange={(e) => setTitle(e.target.value)} value={title} className="form-control" id="title" aria-describedby="title" placeholder="Title" />
+              <input type="text" onBlur={(e) => handleFormValidation(e)} onChange={(e) => setTitle(e.target.value)} value={title} className="form-control" name="title" id="title" aria-describedby="title" placeholder="Title" />
+              {formErrors.title && <small className='text-danger'>Field Required</small>}
             </div>
             <div className="form-group my-3">
               <label for="description">Description</label>
-              <input type="text" onChange={(e) => setDescription(e.target.value)} value={description} className="form-control" id="description" placeholder="Description" />
+              <input type="text" onBlur={(e) => handleFormValidation(e)} onChange={(e) => setDescription(e.target.value)} value={description} className="form-control" name="description" id="description" placeholder="Description" />
+              {formErrors.description && <small className='text-danger'>Field Required</small>}
             </div>
             <div className="form-group my-3">
               <label for="price">Price</label>
-              <input onChange={(e) => setPrice(e.target.value)} value={price} type="number" className="form-control" id="price" placeholder="Price" />
+              <input onBlur={(e) => handleFormValidation(e)} onChange={(e) => setPrice(e.target.value)} name="price" value={price} type="number" className="form-control" id="price" placeholder="Price" />
+              {formErrors.price && <small className='text-danger'>Field Required</small>}
             </div>
             {/* {image && <img className="form-group image my-3" src={image} />} */}
             <Multiselect
@@ -78,6 +94,8 @@ const AddProduct = () => {
               textField={'category'}
               placeholder={'Select Product Category'}
               value={categories}
+              name="categories"
+              onBlur={(e) => handleFormValidation(e)}
               onChange={(value) => onChangeCagetory(value)}
             />
             <div className="form-group my-3">
