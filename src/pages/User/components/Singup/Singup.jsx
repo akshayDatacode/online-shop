@@ -25,7 +25,7 @@ const Singup = () => {
   const handleSubmit = (event) => {
     event.preventDefault()
     dispatch(signupUser(singupDetails)).then(({ res }) => {
-      if (res.status === 201 && res?.data?.token) {
+      if (res?.status === 201 && res?.data?.token) {
         history.push('/')
         setSingupDetails({
           email: '',
