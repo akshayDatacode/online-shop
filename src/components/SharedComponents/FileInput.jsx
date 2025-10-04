@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
-
 import uploadPlus from '../../assets/images/uploadPlus.png';
 import editIcon from '../../assets/images/editIcon.png';
+
 import './fileInput.scss';
 
 const FileInput = ({ name, onFileChange, imgSrc }) => {
