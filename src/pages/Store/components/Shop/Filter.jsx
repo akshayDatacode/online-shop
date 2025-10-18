@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Slider from 'react-rangeslider';
 import { Collapse } from 'reactstrap';
+import PropTypes from 'prop-types';
 
 import { category } from "../../../../utility/options";
 
@@ -124,4 +125,13 @@ const Filter = ({
     </>
   )
 }
+
+Filter.propTypes = {
+  handleFilterChange: PropTypes.func.isRequired,
+  filterQuery: PropTypes.shape({
+    priceRageEnd: PropTypes.number.isRequired,
+    categoriesList: PropTypes.arrayOf(PropTypes.string)
+  }).isRequired
+};
+
 export default Filter
