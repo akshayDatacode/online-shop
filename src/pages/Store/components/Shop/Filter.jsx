@@ -54,9 +54,6 @@ const Filter = ({
     );
   };
 
-  console.log("categoriesList", categoriesList)
-
-
   return (
     <>
       <div className="row mx-0">
