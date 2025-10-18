@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import { useMemo } from 'react';
+import React, { useState } from 'react'
 import Slider from 'react-rangeslider';
 import { Collapse } from 'reactstrap';
 
