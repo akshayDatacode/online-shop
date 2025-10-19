@@ -5,8 +5,8 @@ import Loader from "react-loader-spinner";
 const CustomLoader = ({
   color = "#797676",
   type = "ThreeDots",
-  height = 50,
-  width = 50,
+  height = 55,
+  width = 55,
   timeout = 1000
 }) => (
   <div className="loader-container">
