@@ -13,6 +13,7 @@ const CartItem = ({ item, showCross, onMouseEnter, onMouseLeave, onRemove, onUpd
         className="rounded-circle"
         height="50"
         width="50"
+        loading='lazy'
         alt={item.title}
       />
     </div>
