@@ -37,6 +37,7 @@ const FileInput = ({ name, onFileChange, imgSrc }) => {
       <img 
         className="uploadedImage" 
         src={imgSrc}
+        loading='lazy'
         alt="Product preview" 
       />
       {renderInput()}
