@@ -53,6 +53,7 @@ const Shop = () => {
         src={require(`../../../../assets/images/hero.png`).default}
         alt="Loading..."
         className="img-fluid"
+        loading='lazy'
       />
       <div className="row m-0">
         <div className="col-12 text-left">
