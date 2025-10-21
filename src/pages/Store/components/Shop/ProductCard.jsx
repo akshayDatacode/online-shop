@@ -29,6 +29,7 @@ const ProductCard = ({
               <img
                 src={product.image ? product.image : process.env.REACT_APP_DEFAULT_IMAGE}
                 alt="loading.."
+                loading='lazy'
                 className="mx-auto my-auto image img-fluid"
                 sizes="(min-width: 1122px) 296px,(min-width: 866px) 218px,(max-width: 610px) 202px,202px"
               />
