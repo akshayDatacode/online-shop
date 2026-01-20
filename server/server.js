@@ -9,6 +9,7 @@ const shopRoutes = require("./routes/shopRoutes");
 const userRoutes = require("./routes/userRoutes");
 const paymentRoutes = require("./routes/paymentRoutes");
 const mongo = require("./configs/dbConfig");
+const checkToken = require("./middlewares/checkToken");
 const app = express();
 
 const port = 5000;
@@ -17,8 +18,6 @@ app.use(cors());
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 app.use(express.json());
-
-app.use("/api/user", userRoutes)
 
 // TOKEN AUTHENTICATION- ALL THE ROUTES WRITTEN BELOW THIS WILL NEED TOKEN TO BE SENT in request headers
 app.use((req, res, next) => {
@@ -31,6 +30,10 @@ app.use((req, res, next) => {
   next();
 });
 
+/* Check for authentication on protected resources */
+app.use(checkToken)
+
+app.use("/api/user", userRoutes)
 app.use("/api/payment", paymentRoutes)
 app.use("/api", shopRoutes);
 
